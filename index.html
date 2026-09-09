@@ -6,23 +6,17 @@
   <meta name="theme-color" content="#ADF1FF" />
   <meta name="description" content="Agora — Social connection for young adults. Research and writing on how young adults connect, gather, and build community." />
   <title>Agora — Social Connection for Young Adults</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="home">
   <main class="hero" aria-label="Agora home">
     <img class="hero__image" src="assets/agora-hero.png" alt="Sunlit Mediterranean-style terrace overlooking Los Angeles, with a bicycle, chess table, palms and a basketball court." />
 
-    <!-- Real interactive controls laid directly over the designed buttons in the hero artwork. -->
+    <!-- Invisible hit areas sit over the two buttons already designed into the image.
+         This keeps the artwork visually exact while making both buttons fully clickable. -->
     <nav class="hero__links" aria-label="Agora sections">
-      <a class="hero__button hero__button--research" href="research.html" aria-label="Open Research">
-        <span>Research</span><span aria-hidden="true">→</span>
-      </a>
-      <a class="hero__button hero__button--writing" href="writing.html" aria-label="Open Writing">
-        <span>Writing</span><span aria-hidden="true">→</span>
-      </a>
+      <a class="hero__hit hero__hit--research" href="research.html" aria-label="Open Research"></a>
+      <a class="hero__hit hero__hit--writing" href="writing.html" aria-label="Open Writing"></a>
     </nav>
   </main>
 </body>
