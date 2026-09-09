@@ -10,14 +10,31 @@
 </head>
 <body class="home">
   <main class="hero" aria-label="Agora home">
-    <img class="hero__image" src="assets/agora-hero.png" alt="Sunlit Mediterranean-style terrace overlooking Los Angeles, with a bicycle, chess table, palms and a basketball court." />
+    <div class="hero__art" aria-hidden="true">
+      <img class="hero__image" src="assets/agora-hero.png" alt="" />
 
-    <!-- Invisible hit areas sit over the two buttons already designed into the image.
-         This keeps the artwork visually exact while making both buttons fully clickable. -->
-    <nav class="hero__links" aria-label="Agora sections">
-      <a class="hero__hit hero__hit--research" href="research.html" aria-label="Open Research"></a>
-      <a class="hero__hit hero__hit--writing" href="writing.html" aria-label="Open Writing"></a>
-    </nav>
+      <!-- Cloud patches: a blurred local-sky patch softly covers each original cloud area,
+           then the real cloud crop drifts above it. This lets the clouds genuinely move
+           while preserving the original artwork. -->
+      <img class="cloud cloud--left-base" src="assets/cloud-left-base.png" alt="" />
+      <img class="cloud cloud--left" src="assets/cloud-left.png" alt="" />
+      <img class="cloud cloud--right-base" src="assets/cloud-right-base.png" alt="" />
+      <img class="cloud cloud--right" src="assets/cloud-right.png" alt="" />
+
+      <!-- Very subtle foreground foliage duplicate for gentle wind sway. -->
+      <img class="foliage" src="assets/agora-foliage.png" alt="" />
+
+      <!-- Real HTML buttons fully cover the baked-in button artwork. This keeps the
+           labels razor-sharp on Retina displays and removes the previous double-oval. -->
+      <nav class="hero__buttons" aria-label="Agora sections">
+        <a class="hero__button hero__button--research" href="research.html">
+          <span>Research</span><span class="arrow">→</span>
+        </a>
+        <a class="hero__button hero__button--writing" href="writing.html">
+          <span>Writing</span><span class="arrow">→</span>
+        </a>
+      </nav>
+    </div>
   </main>
 </body>
 </html>
