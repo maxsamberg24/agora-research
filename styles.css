@@ -1,8 +1,8 @@
 :root {
   --ghost: #F2F2F8;
   --sky: #ADF1FF;
-  --peach: #FDB873;
-  --button-blue: #8FD7FD;
+  --peach: #FCC99C;
+  --coral: #F67451;
   --ink: #161616;
 }
 
@@ -22,131 +22,72 @@ a { color: inherit; }
   background: var(--sky);
 }
 
-/* Fixed 3:2 artboard matching the source image exactly. It scales with
-   object-fit: cover behavior while keeping every overlay pixel-aligned. */
-.hero__art {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: max(100vw, 150svh);
-  aspect-ratio: 3 / 2;
-  transform: translate(-50%, -50%);
-  overflow: hidden;
-}
-
-.hero__image,
-.foliage {
+/* The original hero stays intact. The tiny scale/position drift gives the page
+   a barely-there living quality without adding fake falling leaves or changing
+   the composition. */
+.hero__image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
+  object-position: 50% 50%;
   user-select: none;
   -webkit-user-drag: none;
 }
 
-/* CLOUDS --------------------------------------------------------------
-   Two soft local patches erase the static cloud detail beneath the moving
-   versions. Motion is intentionally slow enough to feel like real atmosphere. */
-.cloud {
+/* Clickable areas only — no second oval, text, or arrow is drawn in HTML.
+   The visible buttons are the ones already baked cleanly into the artwork. */
+.hero__links {
   position: absolute;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-.cloud--left-base,
-.cloud--left {
-  left: 4.5573%;
-  top: 17.5781%;
-  width: 31.9010%;
-  height: 24.4141%;
-}
-.cloud--right-base,
-.cloud--right {
-  left: 65.7552%;
-  top: 7.8125%;
-  width: 34.2448%;
-  height: 46.875%;
-}
-.cloud--left-base,
-.cloud--right-base { z-index: 1; }
-.cloud--left,
-.cloud--right {
-  z-index: 2;
-  will-change: transform;
-}
-.cloud--left { animation: cloud-drift-left 88s linear infinite alternate; }
-.cloud--right { animation: cloud-drift-right 112s linear infinite alternate; }
-
-@keyframes cloud-drift-left {
-  from { transform: translate3d(-0.5%, 0, 0); }
-  to   { transform: translate3d(4.5%, -0.35%, 0); }
-}
-@keyframes cloud-drift-right {
-  from { transform: translate3d(-1.25%, 0.15%, 0); }
-  to   { transform: translate3d(3.25%, -0.25%, 0); }
-}
-
-/* LEAVES --------------------------------------------------------------
-   This transparent extraction contains only the upper-left leaves/branches and
-   upper-right palm crown. A tiny sway adds life without looking animated. */
-.foliage {
-  z-index: 3;
-  pointer-events: none;
-  transform-origin: 50% 5%;
-  will-change: transform;
-  animation: foliage-sway 7.5s ease-in-out infinite alternate;
-}
-@keyframes foliage-sway {
-  0%   { transform: rotate(-0.10deg) translate3d(-0.05%, 0, 0); }
-  45%  { transform: rotate(0.13deg) translate3d(0.08%, -0.03%, 0); }
-  100% { transform: rotate(-0.04deg) translate3d(0.02%, 0.04%, 0); }
-}
-
-/* BUTTONS -------------------------------------------------------------
-   Coordinates match the baked artwork on the 1536×1024 source. These pills are
-   deliberately a few pixels larger than the original, so no old edge or blurry
-   label can peek out behind them. */
-.hero__buttons { position: absolute; inset: 0; z-index: 5; }
-.hero__button {
-  position: absolute;
-  top: 49.45%;
-  height: 7.65%;
-  width: 16.55%;
-  border-radius: 999px;
+  left: 50%;
+  top: 54.1%;
+  transform: translate(-50%, -50%);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2.05%;
+  gap: clamp(18px, 1.7vw, 28px);
+  z-index: 2;
+}
+.hero__hit {
+  display: block;
+  width: clamp(210px, 16vw, 248px);
+  height: clamp(60px, 6.8vh, 70px);
+  border-radius: 999px;
+  background: transparent;
   text-decoration: none;
-  color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(19px, 1.82vw, 29px);
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: geometricPrecision;
-  box-shadow: none;
-  transition: transform 180ms ease, filter 180ms ease;
+  cursor: pointer;
 }
-.hero__button--research { left: 33.56%; background: rgb(253,184,115); }
-.hero__button--writing  { left: 51.20%; background: rgb(143,215,253); }
-.hero__button .arrow {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.35em;
-  line-height: 1;
-  margin-left: 12px;
+.hero__hit:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 5px;
 }
-.hero__button:hover { transform: translateY(-1px); filter: brightness(1.015); }
-.hero__button:active { transform: translateY(0); }
-.hero__button:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+
+/* The original artwork is 3:2. When the viewport becomes very wide, the image
+   crops vertically; this keeps the invisible hit areas aligned with the art. */
+@media (min-aspect-ratio: 3/2) {
+  .hero__links { top: 53.9%; }
+}
 
 @media (max-width: 700px) {
+  .home { overflow: hidden; }
   .hero { min-height: 100svh; }
-  .hero__button { font-size: clamp(16px, 3.6vw, 22px); }
+  .hero__image { object-position: 50% 50%; }
+
+  /* Preserve the artwork and align two generous invisible tap targets over its buttons. */
+  .hero__links {
+    top: 54.1%;
+    bottom: auto;
+    width: auto;
+    flex-direction: row;
+    gap: 10px;
+  }
+  .hero__hit {
+    width: min(38vw, 170px);
+    height: 54px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cloud--left, .cloud--right, .foliage { animation: none; }
+  .hero__image { transform: none; }
 }
 
 /* PLACEHOLDER INNER PAGES */
@@ -192,5 +133,5 @@ a { color: inherit; }
   text-decoration: none;
   font-weight: 600;
 }
-.research-page { background: #FCC99C; }
-.writing-page { background: #ADF1FF; }
+.research-page { background: var(--peach); }
+.writing-page { background: var(--sky); }
