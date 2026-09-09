@@ -1,22 +1,29 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Agora Research</title>
-  <style>
-    body { margin:0; min-height:100vh; display:grid; place-items:center;
-           font: 16px/1.6 -apple-system, system-ui, sans-serif;
-           background:#0e0e10; color:#e8e6e3; }
-    main { text-align:center; padding:2rem; }
-    h1 { font-size:clamp(2rem,6vw,3.5rem); margin:0 0 .5rem; letter-spacing:-.02em; }
-    p { opacity:.6; margin:0; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ADF1FF" />
+  <meta name="description" content="Agora — Social connection for young adults. Research and writing on how young adults connect, gather, and build community." />
+  <title>Agora — Social Connection for Young Adults</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <main>
-    <h1>Agora Research</h1>
-    <p>Coming soon.</p>
+<body class="home">
+  <main class="hero" aria-label="Agora home">
+    <img class="hero__image" src="assets/agora-hero.png" alt="Sunlit Mediterranean-style terrace overlooking Los Angeles, with a bicycle, chess table, palms and a basketball court." />
+
+    <!-- Real interactive controls laid directly over the designed buttons in the hero artwork. -->
+    <nav class="hero__links" aria-label="Agora sections">
+      <a class="hero__button hero__button--research" href="research.html" aria-label="Open Research">
+        <span>Research</span><span aria-hidden="true">→</span>
+      </a>
+      <a class="hero__button hero__button--writing" href="writing.html" aria-label="Open Writing">
+        <span>Writing</span><span aria-hidden="true">→</span>
+      </a>
+    </nav>
   </main>
 </body>
 </html>
