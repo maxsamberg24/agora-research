@@ -53,15 +53,19 @@ body{overflow:hidden;background:#F3C89B}
   display:flex;flex-direction:column;align-items:center;
   padding:0 var(--gut);text-align:center;
 }
-.hero .eyebrow{
+/* the byline sits in normal flow just under the bar, so it can never end up
+   underneath the nav pill however short the window gets */
+.top{flex:0 0 auto}
+.eyebrow{
   color:#2A1B10;opacity:0;letter-spacing:.26em;font-size:.69rem;
-  margin:0 0 clamp(1.2rem,5vh,3.2rem);
+  margin:0;padding:0 var(--gut);text-align:center;
   animation:fadeup .8s ease .2s forwards;
   text-shadow:0 1px 16px rgba(255,244,226,.9);
 }
 h1{
   font-family:var(--serif);font-weight:400;
-  font-size:clamp(2.5rem,6.6vw,5.95rem);line-height:1.02;letter-spacing:-.018em;
+  /* the vh term keeps the headline off the byline on short windows */
+  font-size:clamp(2.5rem,min(6.6vw,13vh),5.95rem);line-height:1.02;letter-spacing:-.018em;
   margin:0;max-width:none;width:min(1080px,78vw);text-wrap:wrap;color:#161616;
   text-shadow:0 2px 34px rgba(255,246,230,.72), 0 1px 3px rgba(255,246,230,.9);
 }
@@ -102,7 +106,6 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
 /* narrow screens: back to normal flow, the plate crops too hard to pin to */
 @media (max-width:860px){
   .hero{position:static;flex:1;justify-content:center;padding:1rem var(--gut)}
-  .hero .eyebrow{margin:0 0 clamp(1rem,3vh,2rem)}
 }
 @media (max-width:640px){
   .doors{gap:.55rem;flex-direction:column;align-items:stretch;max-width:21rem;margin:0 auto}
@@ -124,9 +127,10 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
 
 <div class="content">
 
+  <div class="top">
   <nav class="nav" aria-label="Main">
     <span class="brand"><img src="/assets/agora-mark.png" alt="Agora"></span>
-    <a class="contact" href="mailto:maxsamberg24@gmail.com">Get in touch <span class="arr">&rarr;</span></a>
+    <a class="contact" href="mailto:maxsamberg24@gmail.com">Get in touch</a>
     <div class="pill">
       <a href="/" aria-label="Home">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>
@@ -137,8 +141,10 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
     </div>
   </nav>
 
+  <p class="eyebrow">Max Samberg · Summer 2026 · Qualitative research</p>
+  </div>
+
   <div class="hero">
-    <p class="eyebrow">Max Samberg · Summer 2026 · Qualitative research</p>
     <h1 id="head"></h1>
     <p class="standfirst">Twenty conversations on how young adults connect socially — and why the bar keeps winning.</p>
   </div>
@@ -173,6 +179,5 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
 
 })();
 </script>
-<script src="/assets/nav.js" defer></script>
 </body>
 </html>

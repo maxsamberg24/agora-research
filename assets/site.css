@@ -31,13 +31,6 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 
-/* ---- soft page transition (opacity only, so position:fixed keeps working) ---- */
-@media (prefers-reduced-motion:no-preference){
-  body{animation:pagein .5s cubic-bezier(.25,.7,.3,1) both}
-  body.leaving{animation:pageout .29s cubic-bezier(.5,0,.78,0) both}
-}
-@keyframes pagein{from{opacity:0}to{opacity:1}}
-@keyframes pageout{from{opacity:1}to{opacity:0}}
 body{
   margin:0;
   background:var(--ghost);
@@ -107,7 +100,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--coral);outline-offs
     0 8px 26px rgba(22,22,22,.14);
   transition:background .22s ease, transform .22s cubic-bezier(.2,.8,.3,1), box-shadow .22s ease;
 }
-.contact .arr{color:var(--coral);font-weight:700}
 .contact:hover{
   background:rgba(255,255,255,.66);transform:translateY(-2px);
   box-shadow:
