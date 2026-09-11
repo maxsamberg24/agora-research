@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Summary — Agora Research</title>
 <meta name="description" content="The one-pager: twenty conversations on how young adults connect socially, and why the bar keeps winning.">
-<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="icon" href="/assets/agora-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
@@ -31,8 +29,8 @@ h1{
 }
 h1 .sky{color:var(--sky)}
 .standfirst{
-  font-family:var(--serif);font-size:clamp(1.05rem,1.75vw,1.32rem);
-  line-height:1.28;margin:0;max-width:none;color:var(--ink);
+  font-family:var(--serif);font-size:clamp(1.1rem,2.4vw,1.5rem);
+  line-height:1.28;margin:0;max-width:42ch;color:var(--ink);
 }
 
 .dlrow{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.6rem 0 0}
@@ -111,9 +109,6 @@ ul.finds li:first-child{border-top:1.5px solid var(--ink)}
 ul.finds li::before{content:"→";position:absolute;left:0;top:.78rem;color:var(--coral);font-weight:700}
 ul.finds b{font-weight:700}
 
-.rightcol{display:flex;flex-direction:column}
-.rightcol .hand{margin:1.8rem 0 0;align-self:center;max-width:none;text-align:center}
-@media (max-width:879px){.rightcol .hand{align-self:flex-start;text-align:left}}
 .problems{background:var(--white);border:1.5px solid var(--ink);padding:1.3rem 1.4rem}
 .problems h3{font-family:var(--heavy);font-size:.92rem;margin:0 0 .9rem;letter-spacing:-.01em;text-transform:uppercase}
 .problems ol{margin:0;padding-left:1.2rem;font-size:.9rem;line-height:1.45}
@@ -255,9 +250,9 @@ ul.finds b{font-weight:700}
           <li><b>Everyone described the same perfect day:</b> a quiet morning, something active with friends, a shared meal, games at night. Alcohol is never the point.</li>
         </ul>
 
+        <p class="hand">People don't go out to drink, they go out to connect!</p>
       </div>
 
-      <div class="rightcol">
       <aside class="problems" id="problems">
         <h3>The 5 core problems</h3>
         <ol>
@@ -271,8 +266,6 @@ ul.finds b{font-weight:700}
           <a href="/research/reports/#thesis">Where this leads →</a>
         </p>
       </aside>
-        <p class="hand">People don't go out to drink, they go out to connect!</p>
-      </div>
     </div>
   </div>
 </section>
@@ -330,6 +323,5 @@ ul.finds b{font-weight:700}
   nums.forEach(function(el){ io.observe(el); });
 })();
 </script>
-<script src="/assets/nav.js" defer></script>
 </body>
 </html>
