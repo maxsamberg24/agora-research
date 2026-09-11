@@ -55,26 +55,27 @@ body{overflow:hidden;background:#F3C89B}
 .hero{
   flex:1;display:flex;flex-direction:column;
   align-items:center;justify-content:flex-start;
-  padding:calc(var(--navh) + clamp(.2rem,1.4vh,1rem)) var(--gut) 0;text-align:center;
+  padding:clamp(.2rem,1.4vh,1rem) var(--gut) 0;text-align:center;
 }
 .hero .eyebrow{
-  color:#2A1B10;opacity:0;letter-spacing:.26em;font-size:.66rem;
+  color:#2A1B10;opacity:0;letter-spacing:.26em;font-size:.69rem;
+  margin:0 0 clamp(1rem,13.3vh,9rem);
   animation:fadeup .8s ease .2s forwards;
   text-shadow:0 1px 16px rgba(255,244,226,.9);
 }
 h1{
   font-family:var(--serif);font-weight:400;
-  font-size:clamp(2.5rem,6.6vw,5.2rem);line-height:1.02;letter-spacing:-.018em;
-  margin:0;max-width:17ch;color:#241608;
+  font-size:clamp(2.2rem,5.4vw,4.86rem);line-height:1.02;letter-spacing:-.018em;
+  margin:0;max-width:none;width:min(1020px,76vw);text-wrap:wrap;color:#161616;
   text-shadow:0 2px 34px rgba(255,246,230,.72), 0 1px 3px rgba(255,246,230,.9);
 }
 h1 .w{display:inline-block;opacity:0;transform:translateY(.36em);
   animation:fadeup .72s cubic-bezier(.2,.8,.3,1) forwards}
-h1 .accent{font-style:italic;color:#E32A5B;text-shadow:0 2px 22px rgba(255,240,246,.85), 0 1px 2px rgba(255,246,230,.7)}
+h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,236,.85), 0 1px 2px rgba(255,246,230,.7)}
 @keyframes fadeup{to{opacity:1;transform:none}}
 
 .standfirst{
-  margin:clamp(1.9rem,6.2vh,3.6rem) 0 0;max-width:56ch;
+  margin:clamp(1rem,4.7vh,2.8rem) 0 0;max-width:none;width:min(880px,72vw);
   font-size:1.05rem;line-height:1.55;color:#2A1B10;
   opacity:0;animation:fadeup .8s ease 1.55s forwards;
   text-shadow:0 1px 14px rgba(255,246,230,.95);
@@ -82,24 +83,24 @@ h1 .accent{font-style:italic;color:#E32A5B;text-shadow:0 2px 22px rgba(255,240,2
 
 .doors{
   display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center;
-  padding:0 var(--gut) clamp(1.1rem,3.4vh,2.2rem);
+  padding:0 var(--gut) clamp(1.1rem,5.7vh,3.4rem);
   opacity:0;animation:fadeup .9s ease 1.85s forwards;
 }
 .doors .glassbtn{
   font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
   padding:1rem 2.1rem;color:#241608;
-  background:rgba(255,250,242,.26);
+  background:rgba(173,241,255,.6);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.75),
-    inset 0 0 0 1px rgba(255,255,255,.4),
-    0 10px 34px rgba(94,54,24,.2);
+    inset 0 1px 0 rgba(255,255,255,.8),
+    inset 0 0 0 1px rgba(255,255,255,.55),
+    0 10px 34px rgba(30,88,116,.22);
 }
 .doors .glassbtn:hover{
-  background:rgba(255,252,246,.44);
+  background:rgba(173,241,255,.82);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.95),
-    inset 0 0 0 1px rgba(255,255,255,.6),
-    0 16px 42px rgba(94,54,24,.26);
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 0 0 1px rgba(255,255,255,.75),
+    0 16px 42px rgba(30,88,116,.28);
 }
 
 @media (max-width:640px){
@@ -140,7 +141,7 @@ h1 .accent{font-style:italic;color:#E32A5B;text-shadow:0 2px 22px rgba(255,240,2
   </nav>
 
   <div class="hero">
-    <p class="eyebrow">Summer 2026 · Qualitative research</p>
+    <p class="eyebrow">Max Samberg · Summer 2026 · Qualitative research</p>
     <h1 id="head"></h1>
     <p class="standfirst">Twenty conversations on how young adults connect socially — and why the bar keeps winning.</p>
   </div>
@@ -157,14 +158,14 @@ h1 .accent{font-style:italic;color:#E32A5B;text-shadow:0 2px 22px rgba(255,240,2
 (function(){
   /* headline, revealed word by word */
   var head = document.getElementById('head');
-  var parts = ["More ways to connect than ever.", "Less| connection."];
+  var parts = ["More ways to connect than ever.", "Less connection."];
   var i = 0;
   parts.forEach(function(part, pi){
     part.split(' ').forEach(function(word){
-      var accent = word.indexOf('|') > -1;
+      var accent = pi === 1;            /* whole second line is the accent */
       var s = document.createElement('span');
       s.className = 'w' + (accent ? ' accent' : '');
-      s.textContent = word.replace('|','');
+      s.textContent = word;
       s.style.animationDelay = (0.4 + i * 0.085) + 's';
       head.appendChild(s);
       head.appendChild(document.createTextNode(' '));
