@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Research — Agora</title>
 <meta name="description" content="Twenty conversations on how young adults connect socially — and why the bar keeps winning.">
-<link rel="icon" href="/assets/agora-mark.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
@@ -35,15 +37,25 @@ body{overflow:hidden;background:#F3C89B}
 }
 
 /* ---------- content ---------- */
-.content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
+.content{
+  position:relative;z-index:10;height:100%;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+
+/* The photo is object-fit:cover, so the horizon moves as the viewport ratio
+   changes. --horizon reproduces exactly where terrace-a.jpg's mountain line
+   lands, so the copy is pinned to the SKY rather than to the viewport.
+   Source plate is 1672x941 with the ridge at 52.8% of its height. */
 .hero{
-  flex:1;display:flex;flex-direction:column;
-  align-items:center;justify-content:flex-start;
-  padding:clamp(.2rem,1.4vh,1rem) var(--gut) 0;text-align:center;
+  --horizon:min(52.8vh, 1.58vw + 50vh);
+  position:absolute;left:0;right:0;
+  bottom:calc(100vh - var(--horizon) + 46px);
+  display:flex;flex-direction:column;align-items:center;
+  padding:0 var(--gut);text-align:center;
 }
 .hero .eyebrow{
   color:#2A1B10;opacity:0;letter-spacing:.26em;font-size:.69rem;
-  margin:0 0 clamp(1rem,12.7vh,9rem);
+  margin:0 0 clamp(1.2rem,5vh,3.2rem);
   animation:fadeup .8s ease .2s forwards;
   text-shadow:0 1px 16px rgba(255,244,226,.9);
 }
@@ -87,9 +99,14 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
     0 16px 42px rgba(30,88,116,.28);
 }
 
+/* narrow screens: back to normal flow, the plate crops too hard to pin to */
+@media (max-width:860px){
+  .hero{position:static;flex:1;justify-content:center;padding:1rem var(--gut)}
+  .hero .eyebrow{margin:0 0 clamp(1rem,3vh,2rem)}
+}
 @media (max-width:640px){
   .doors{gap:.55rem;flex-direction:column;align-items:stretch;max-width:21rem;margin:0 auto}
-  .doors .glassbtn{justify-content:center;padding:.9rem 1.4rem}
+  .doors .glassbtn{justify-content:center;height:auto;padding:.9rem 1.4rem}
   .standfirst{font-size:.94rem}
 }
 @media (max-height:600px){.standfirst{display:none}}
@@ -109,6 +126,7 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
 
   <nav class="nav" aria-label="Main">
     <span class="brand"><img src="/assets/agora-mark.png" alt="Agora"></span>
+    <a class="contact" href="mailto:maxsamberg24@gmail.com">Get in touch <span class="arr">&rarr;</span></a>
     <div class="pill">
       <a href="/" aria-label="Home">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>
@@ -155,5 +173,6 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
 
 })();
 </script>
+<script src="/assets/nav.js" defer></script>
 </body>
 </html>

@@ -6,7 +6,9 @@
 <meta name="theme-color" content="#ADF1FF">
 <title>Agora — Social Connection for Young Adults</title>
 <meta name="description" content="Agora — social connection for young adults. Research and writing on how young adults connect, gather, and build community.">
-<link rel="icon" href="/assets/agora-pin.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap">
@@ -25,14 +27,33 @@ body{
 }
 img{display:block;max-width:100%}
 
-/* ---------- the view ---------- */
-.stage{position:fixed;inset:0;overflow:hidden}
+/* ---------- the view ----------
+   The full plate is shown uncropped (object-fit:contain). A blurred, oversized
+   copy sits behind it so the leftover edge reads as depth rather than a bar. */
+.stage{position:fixed;inset:0;overflow:hidden;background:#BFE0F2}
 .ken{position:absolute;inset:0}
 .plate{
   position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:50% 50%;
+  object-fit:contain;object-position:50% 50%;
   user-select:none;-webkit-user-drag:none;
 }
+.plate.fill{
+  object-fit:cover;transform:scale(1.14);
+  filter:blur(42px) saturate(1.12) brightness(1.02);
+}
+/* feather the sharp plate into the blurred one so the join is invisible */
+.plate:not(.fill){
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);
+}
+
+/* soft page transition */
+@media (prefers-reduced-motion:no-preference){
+  body{animation:pagein .5s cubic-bezier(.25,.7,.3,1) both}
+  body.leaving{animation:pageout .29s cubic-bezier(.5,0,.78,0) both}
+}
+@keyframes pagein{from{opacity:0}to{opacity:1}}
+@keyframes pageout{from{opacity:1}to{opacity:0}}
 
 /* ---------- the stack, centred ---------- */
 .content{
@@ -128,6 +149,7 @@ img{display:block;max-width:100%}
 
 <div class="stage" aria-hidden="true">
   <div class="ken">
+    <img class="plate fill" src="/assets/home-hero.jpg" alt="">
     <img class="plate" src="/assets/home-hero.jpg" alt="">
   </div>
 </div>
@@ -142,5 +164,6 @@ img{display:block;max-width:100%}
   </nav>
 </main>
 
+<script src="/assets/nav.js" defer></script>
 </body>
 </html>
