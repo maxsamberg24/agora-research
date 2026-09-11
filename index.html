@@ -6,7 +6,9 @@
 <meta name="theme-color" content="#ADF1FF">
 <title>Agora — Social Connection for Young Adults</title>
 <meta name="description" content="Agora — social connection for young adults. Research and writing on how young adults connect, gather, and build community.">
-<link rel="icon" href="/assets/agora-pin.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap">
@@ -25,28 +27,43 @@ body{
 }
 img{display:block;max-width:100%}
 
-/* ---------- the view ---------- */
-.stage{position:fixed;inset:0;overflow:hidden}
-.ken{
-  position:absolute;inset:0;will-change:transform;
-  animation:walkout 56s cubic-bezier(.45,0,.55,1) infinite alternate;
-}
-@keyframes walkout{from{transform:scale(1)} to{transform:scale(1.06)}}
+/* ---------- the view ----------
+   The full plate is shown uncropped (object-fit:contain). A blurred, oversized
+   copy sits behind it so the leftover edge reads as depth rather than a bar. */
+.stage{position:fixed;inset:0;overflow:hidden;background:#BFE0F2}
+.ken{position:absolute;inset:0}
 .plate{
   position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:50% 52%;
+  object-fit:contain;object-position:50% 50%;
   user-select:none;-webkit-user-drag:none;
 }
+.plate.fill{
+  object-fit:cover;transform:scale(1.14);
+  filter:blur(42px) saturate(1.12) brightness(1.02);
+}
+/* feather the sharp plate into the blurred one so the join is invisible */
+.plate:not(.fill){
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);
+}
+
+/* soft page transition */
+@media (prefers-reduced-motion:no-preference){
+  body{animation:pagein .5s cubic-bezier(.25,.7,.3,1) both}
+  body.leaving{animation:pageout .29s cubic-bezier(.5,0,.78,0) both}
+}
+@keyframes pagein{from{opacity:0}to{opacity:1}}
+@keyframes pageout{from{opacity:1}to{opacity:0}}
 
 /* ---------- the stack, centred ---------- */
 .content{
   position:relative;z-index:10;height:100%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:0 1.4rem;text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  padding:clamp(2rem,13.6vh,9rem) 1.4rem 0;text-align:center;
 }
 
 .pin{
-  height:clamp(78px,11vh,126px);width:auto;
+  height:clamp(96px,19.3vh,196px);width:auto;
   filter:drop-shadow(0 3px 16px rgba(255,252,246,.8));
   opacity:0;animation:rise .9s cubic-bezier(.2,.8,.3,1) .1s forwards;
 }
@@ -54,13 +71,13 @@ img{display:block;max-width:100%}
 .wordmark{
   font-family:"Playfair Display",Georgia,serif;font-weight:500;
   font-size:clamp(3.4rem,9.4vw,7rem);line-height:.98;letter-spacing:-.015em;
-  margin:.28em 0 0;color:#12172B;
+  margin:-.21em 0 0;color:#12172B;
   text-shadow:0 2px 26px rgba(255,252,246,.7);
   opacity:0;animation:rise .9s cubic-bezier(.2,.8,.3,1) .25s forwards;
 }
 
 .tagline{
-  margin:.85rem 0 0;
+  margin:clamp(.9rem,3.3vh,2rem) 0 0;
   font-size:clamp(.68rem,1.15vw,.88rem);font-weight:500;
   letter-spacing:.34em;text-transform:uppercase;color:#1B2236;
   text-shadow:0 1px 14px rgba(255,252,246,.92);
@@ -68,14 +85,15 @@ img{display:block;max-width:100%}
 }
 
 .doors{
-  display:flex;flex-wrap:wrap;gap:clamp(.8rem,1.8vw,1.5rem);justify-content:center;
-  margin-top:clamp(1.8rem,4.4vh,3rem);
+  display:flex;flex-wrap:wrap;gap:clamp(.75rem,1.53vw,1.4rem);justify-content:center;
+  margin-top:clamp(1.8rem,6.2vh,4rem);
   opacity:0;animation:rise .9s cubic-bezier(.2,.8,.3,1) .6s forwards;
 }
 .door{
   display:inline-flex;align-items:center;justify-content:center;gap:1.1rem;
-  min-width:clamp(12rem,17vw,15.5rem);
-  padding:.95rem 2rem;border-radius:999px;
+  min-width:clamp(11.5rem,16.1vw,15rem);
+  height:clamp(50px,4.5vw,68px);
+  padding:0 2rem;border-radius:999px;
   font-family:"Playfair Display",Georgia,serif;font-weight:500;
   font-size:clamp(1.05rem,1.5vw,1.28rem);letter-spacing:.005em;
   text-decoration:none;color:#12172B;
@@ -87,32 +105,32 @@ img{display:block;max-width:100%}
 .door:hover{transform:translateY(-3px)}
 
 .door.research{
-  background:rgba(252,201,156,.66);
+  background:rgba(246,116,81,.7);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.9),
-    inset 0 0 0 1px rgba(255,228,198,.7),
-    0 12px 34px rgba(140,80,34,.24);
+    inset 0 0 0 1px rgba(255,255,255,.65),
+    0 12px 34px rgba(140,64,34,.26);
 }
 .door.research:hover{
-  background:rgba(252,201,156,.86);
+  background:rgba(246,116,81,.88);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,1),
-    inset 0 0 0 1px rgba(255,238,216,.85),
-    0 18px 42px rgba(140,80,34,.3);
+    inset 0 0 0 1px rgba(255,255,255,.8),
+    0 18px 42px rgba(140,64,34,.32);
 }
 .door.writing{
-  background:rgba(173,241,255,.62);
+  background:rgba(252,172,91,.7);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.9),
-    inset 0 0 0 1px rgba(212,247,255,.7),
-    0 12px 34px rgba(30,88,116,.22);
+    inset 0 0 0 1px rgba(255,255,255,.65),
+    0 12px 34px rgba(146,88,26,.24);
 }
 .door.writing:hover{
-  background:rgba(173,241,255,.84);
+  background:rgba(252,172,91,.88);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,1),
-    inset 0 0 0 1px rgba(230,251,255,.9),
-    0 18px 42px rgba(30,88,116,.28);
+    inset 0 0 0 1px rgba(255,255,255,.8),
+    0 18px 42px rgba(146,88,26,.3);
 }
 
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
@@ -120,11 +138,9 @@ img{display:block;max-width:100%}
 @media (max-width:640px){
   .tagline{letter-spacing:.24em;font-size:.64rem}
   .doors{flex-direction:column;align-items:stretch;width:100%;max-width:17.5rem}
-  .door{min-width:0;justify-content:space-between;padding:.85rem 1.5rem}
-  .plate{object-position:56% 52%}
+  .door{min-width:0;justify-content:space-between;padding:0 1.5rem;height:3.2rem}
 }
 @media (prefers-reduced-motion:reduce){
-  .ken{animation:none}
   .pin,.wordmark,.tagline,.doors{animation:none;opacity:1}
 }
 </style>
@@ -133,6 +149,7 @@ img{display:block;max-width:100%}
 
 <div class="stage" aria-hidden="true">
   <div class="ken">
+    <img class="plate fill" src="/assets/home-hero.jpg" alt="">
     <img class="plate" src="/assets/home-hero.jpg" alt="">
   </div>
 </div>
@@ -147,5 +164,6 @@ img{display:block;max-width:100%}
   </nav>
 </main>
 
+<script src="/assets/nav.js" defer></script>
 </body>
 </html>
