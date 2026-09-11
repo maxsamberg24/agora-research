@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Summary — Agora Research</title>
+<meta name="description" content="The one-pager: twenty conversations on how young adults connect socially, and why the bar keeps winning.">
+<link rel="icon" href="/assets/agora-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+body{background:var(--ghost)}
+.nav{position:sticky}
+
+.masthead{
+  background:linear-gradient(105deg,#FCC99C 0%,#FBBE92 45%,#F8A882 100%);
+  box-shadow:0 0 0 100vmax transparent;
+  padding:2.6rem 0 2.4rem;margin-top:-.4rem;
+  border-bottom:1.5px solid var(--ink);
+}
+.masthead .wrap > *:last-child{margin-bottom:0}
+.masthead .eyebrow{color:var(--ink);opacity:.72;letter-spacing:.22em;font-size:.64rem}
+h1{
+  font-family:var(--heavy);font-weight:400;
+  font-size:clamp(2rem,5.6vw,3.5rem);line-height:.98;letter-spacing:-.02em;
+  margin:0 0 1rem;max-width:20ch;text-transform:uppercase;color:var(--white);
+}
+h1 .sky{color:var(--sky)}
+.standfirst{
+  font-family:var(--serif);font-size:clamp(1.1rem,2.4vw,1.5rem);
+  line-height:1.28;margin:0;max-width:42ch;color:var(--ink);
+}
+
+.dlrow{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.6rem 0 0}
+.dlrow .glassbtn{font-size:.85rem;padding:.66rem 1.15rem}
+
+section{padding:2.6rem 0 0}
+h2{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.6rem,3.6vw,2.2rem);line-height:1.08;letter-spacing:-.015em;margin:0 0 .9rem;
+}
+p{margin:0 0 1rem;max-width:var(--measure)}
+
+.opening{display:grid;grid-template-columns:1fr;gap:1.2rem}
+@media (min-width:820px){ .opening{grid-template-columns:1.55fr 1fr;gap:2.6rem;align-items:start} }
+.opening .pull{
+  font-family:var(--serif);font-size:1.4rem;line-height:1.32;
+  text-align:right;color:var(--ink);margin:0;
+}
+.opening .pull em{font-style:italic;display:block}
+
+/* stats */
+.stats{
+  list-style:none;padding:0;margin:2rem 0 0;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr));
+  gap:0;border-top:1.5px solid var(--ink);
+}
+.stats li{
+  padding:1.1rem 1.1rem 1.1rem 0;border-bottom:1px solid var(--hair);
+}
+@media (min-width:700px){
+  .stats li + li{border-left:1px solid var(--hair);padding-left:1.1rem}
+}
+.stats a{
+  text-decoration:none;display:block;color:inherit;
+  transition:background .18s ease;border-radius:4px;margin:-.4rem;padding:.4rem;
+}
+.stats a:hover{background:var(--peach)}
+.stats .n{
+  font-family:var(--heavy);font-size:clamp(1.9rem,4.4vw,2.5rem);line-height:1;
+  letter-spacing:-.03em;display:block;margin-bottom:.5rem;
+  font-variant-numeric:tabular-nums;
+}
+.stats .t{font-size:.86rem;line-height:1.45;color:var(--ink-2);display:block}
+.stats .more{
+  font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--coral);margin-top:.5rem;display:inline-block;opacity:0;
+  transition:opacity .18s ease;
+}
+.stats a:hover .more{opacity:1}
+
+/* method band */
+.method{
+  background:var(--coral);color:var(--white);
+  margin:2.4rem 0 0;padding:1rem 0;
+}
+.method .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;align-items:baseline}
+.method .lbl{font-family:var(--heavy);font-size:.8rem;letter-spacing:.04em}
+.method .items{font-size:.86rem;font-weight:600;display:flex;flex-wrap:wrap;gap:.35rem .95rem}
+.method .items span b{font-weight:700}
+
+/* findings */
+.findings{display:grid;grid-template-columns:1fr;gap:2rem}
+@media (min-width:880px){ .findings{grid-template-columns:1.6fr 1fr;gap:2.8rem;align-items:start} }
+
+.zero{display:flex;align-items:baseline;gap:1.1rem;margin:0 0 1.4rem;flex-wrap:wrap}
+.zero .big{font-family:var(--heavy);font-size:clamp(2.6rem,7vw,3.6rem);line-height:.9;color:var(--coral);letter-spacing:-.04em}
+.zero .say{font-family:var(--serif);font-size:1.25rem;line-height:1.26;max-width:26ch}
+.zero .say em{font-style:italic;display:block;color:var(--ink-2)}
+
+ul.finds{list-style:none;padding:0;margin:0}
+ul.finds li{
+  padding:.75rem 0 .75rem 1.6rem;border-top:1px solid var(--hair);
+  position:relative;font-size:.94rem;line-height:1.5;
+}
+ul.finds li:first-child{border-top:1.5px solid var(--ink)}
+ul.finds li::before{content:"→";position:absolute;left:0;top:.78rem;color:var(--coral);font-weight:700}
+ul.finds b{font-weight:700}
+
+.problems{background:var(--white);border:1.5px solid var(--ink);padding:1.3rem 1.4rem}
+.problems h3{font-family:var(--heavy);font-size:.92rem;margin:0 0 .9rem;letter-spacing:-.01em;text-transform:uppercase}
+.problems ol{margin:0;padding-left:1.2rem;font-size:.9rem;line-height:1.45}
+.problems li{margin-bottom:.55rem}
+.problems li:last-child{margin-bottom:0}
+.problems a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--coral)}
+.problems a:hover{background:var(--peach)}
+
+.hand{
+  font-family:var(--hand);font-size:1.55rem;line-height:1.2;color:var(--coral);
+  transform:rotate(-2deg);display:inline-block;margin:1.6rem 0 0;max-width:20ch;
+}
+
+/* quote */
+.quoteband{
+  background:linear-gradient(180deg,#DFF4FB 0%,#ADF1FF 100%);
+  margin:3rem 0 0;padding:2.8rem 0;text-align:center;
+}
+.quoteband blockquote{
+  margin:0 auto;max-width:34ch;
+  font-family:var(--serif);font-size:clamp(1.3rem,3.2vw,1.9rem);line-height:1.25;
+}
+.quoteband cite{
+  display:block;font-family:var(--body);font-style:normal;margin-top:1.1rem;
+  font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);
+}
+
+.close{padding:2.8rem 0 0;text-align:center}
+.close p{
+  font-family:var(--serif);font-size:clamp(1.35rem,3.4vw,2rem);line-height:1.2;
+  margin:0 auto;max-width:26ch;
+}
+.close .so{font-family:var(--hand);color:var(--coral);font-size:1.5rem;display:inline-block;transform:rotate(-1.5deg);margin-left:.3rem}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="navrow">
+    <a class="brand" href="/"><img src="/assets/agora-mark.png" alt="Agora"></a>
+    <div class="pill">
+      <a href="/" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="/research/">Research</a>
+      <a href="/writing/">Writing</a>
+    </div>
+  </div>
+  <div class="subnav">
+    <a href="/research/presentation/">Presentation</a>
+    <a href="/research/summary/" aria-current="page">Summary</a>
+    <a href="/research/reports/">Reports</a>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Max Samberg · Summer 2026 · Qualitative research project</p>
+    <h1>More ways to connect than ever. <span class="sky">Less connection.</span></h1>
+    <p class="standfirst">Twenty conversations on how young adults connect socially — and why the bar keeps winning.</p>
+    <div class="dlrow">
+      <a class="glassbtn" href="/assets/agora-one-pager.pdf" download>Download the one-pager <span class="arr">↓</span></a>
+      <a class="glassbtn" href="/research/presentation/">Full presentation <span class="arr">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="wrap">
+    <div class="opening">
+      <div>
+        <p>Picture kids at recess where everyone is crowded onto <b>the playground</b>. It isn't much fun, but it's reliable so nobody leaves. Around the edges people call out the games they'd rather be playing — <em>flag football, jump rope, dance off</em> — but nobody moves, because the fun was never in the game. It's in the density.</p>
+      </div>
+      <p class="pull">The playground is the bar.<br>We didn't choose it.<br><em>We inherited it.</em></p>
+    </div>
+
+    <ul class="stats">
+      <li>
+        <a href="/research/reports/#background">
+          <span class="n" data-count="73" data-suffix="–79%">0%</span>
+          <span class="t">of Gen Z report loneliness, the highest of any generation</span>
+          <span class="more">The background →</span>
+        </a>
+      </li>
+      <li>
+        <a href="/research/reports/#background">
+          <span class="n">6.5 → 4</span>
+          <span class="t">hours a week with friends, 2014–2019 (<b>before</b> COVID)</span>
+          <span class="more">The background →</span>
+        </a>
+      </li>
+      <li>
+        <a href="/research/reports/#background">
+          <span class="n" data-count="50" data-suffix="%">0%</span>
+          <span class="t">of 18–34s drink — from the likeliest age group to the least</span>
+          <span class="more">The background →</span>
+        </a>
+      </li>
+      <li>
+        <a href="/research/reports/#background">
+          <span class="n" data-count="15" data-suffix="">0</span>
+          <span class="t">cigarettes a day — the mortality risk that lacking social connection carries</span>
+          <span class="more">The background →</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="method">
+  <div class="wrap">
+    <span class="lbl">METHOD</span>
+    <span class="items">
+      <span><b>Sample</b> n = 20</span>
+      <span><b>Ages</b> 23–28</span>
+      <span><b>Gender</b> 14 men, 6 women</span>
+      <span><b>Cities</b> 7</span>
+      <span><b>Questions</b> 7, open-ended</span>
+    </span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="findings">
+      <div>
+        <div class="zero">
+          <span class="big">0/20</span>
+          <span class="say">Not one person made a friend at a bar.<em>Every setting they named was one they went back to.</em></span>
+        </div>
+
+        <ul class="finds">
+          <li><b>New people, yes. Strangers, no.</b> Every path to meeting someone new ran through someone they already knew.</li>
+          <li><b>Friend groups don't merge.</b> The problem isn't that people are alone. It's that the groups never touch.</li>
+          <li><b>Discovery is not the bottleneck.</b> People are flooded with options, not starved. Another events feed solves a problem nobody has.</li>
+          <li><b>Technology = good at logistics, bad at people.</b> "It's easy to find things to do. Not as easy to find people to do them with." — 28, New York.</li>
+          <li><b>Partiful is the only app anyone volunteered as useful.</b> It organizes the invite, but not the occasion, so you end up talking to the people you came with.</li>
+          <li><b>Everyone described the same perfect day:</b> a quiet morning, something active with friends, a shared meal, games at night. Alcohol is never the point.</li>
+        </ul>
+
+        <p class="hand">People don't go out to drink, they go out to connect!</p>
+      </div>
+
+      <aside class="problems" id="problems">
+        <h3>The 5 core problems</h3>
+        <ol>
+          <li>Finding <b>the right people</b> who want to do the same things.</li>
+          <li>Finding <b>new, fun things</b> to do — easily.</li>
+          <li><b>Starting conversations</b> with people you don't know.</li>
+          <li><b>Not trusting</b> that events or apps have the right people.</li>
+          <li><b>Cost and coordination</b> — free, close, schedulable.</li>
+        </ol>
+        <p style="margin:1rem 0 0;font-size:.82rem;line-height:1.45">
+          <a href="/research/reports/#thesis">Where this leads →</a>
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="quoteband">
+  <div class="wrap">
+    <blockquote>
+      "There are a million things happening, then I get overwhelmed, and then I don't know anyone going — so it feels like there is nothing."
+      <cite>— 24, Los Angeles —</cite>
+    </blockquote>
+  </div>
+</div>
+
+<section class="close">
+  <div class="wrap">
+    <p>Our generation wants community, but we lack the infrastructure.<span class="so">So let's build it.</span></p>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer class="site">
+    <p>Reach out if you are interested in learning more — <a href="mailto:maxsamberg24@gmail.com">maxsamberg24@gmail.com</a></p>
+    <p>Figures current to September 2026. Every number above is sourced in <a href="/research/reports/">the full reports</a>.</p>
+  </footer>
+</div>
+
+</main>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nums = [].slice.call(document.querySelectorAll('.n[data-count]'));
+  if (reduce){
+    nums.forEach(function(el){ el.textContent = el.getAttribute('data-count') + el.getAttribute('data-suffix'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var el = en.target;
+      io.unobserve(el);
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var start = null, dur = 1100;
+      function step(ts){
+        if (!start) start = ts;
+        var p = Math.min(1, (ts - start) / dur);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }, {threshold:.6});
+  nums.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+/* ==========================================================================
+   Agora Research — shared styles
+   Design system v3 (8.8.2026)
+   ========================================================================== */
+
+:root{
+  /* palette */
+  --ghost:#F2F2F8;
+  --white:#FFFFFF;
+  --ink:#161616;
+  --ink-2:#5D5D6B;
+  --sky:#ADF1FF;
+  --sky-deep:#8FE3F5;
+  --peach:#FCC99C;
+  --coral:#F67451;
+  --hair:#DBDBE4;
+
+  /* type */
+  --serif:"Instrument Serif","Cormorant Garamond",Georgia,serif;
+  --heavy:"Archivo Black","Helvetica Neue",Arial,sans-serif;
+  --body:"Inter","Helvetica Neue",Arial,sans-serif;
+  --hand:"Caveat","Bradley Hand",cursive;
+
+  /* metrics */
+  --measure:34rem;
+  --wide:58rem;
+  --gut:1.5rem;
+  --navh:4.6rem;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ghost);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16.5px;
+  line-height:1.6;
+  letter-spacing:-.003em;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+::selection{background:var(--sky)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+
+/* ==========================================================================
+   Liquid glass nav
+   ========================================================================== */
+
+.nav{
+  position:sticky;top:0;z-index:100;
+  padding:.85rem var(--gut) .5rem;
+  display:flex;flex-direction:column;align-items:center;gap:.55rem;
+  pointer-events:none;
+}
+.nav > *{pointer-events:auto}
+
+.navrow{
+  width:100%;max-width:var(--wide);
+  display:flex;align-items:center;gap:1rem;
+  position:relative;
+}
+
+.brand{
+  display:block;line-height:0;flex:none;
+  padding:.42rem .7rem;border-radius:999px;
+  background:rgba(255,255,255,.42);
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    inset 0 -1px 0 rgba(255,255,255,.25),
+    0 6px 22px rgba(22,22,22,.13);
+}
+.brand img{height:26px;width:auto}
+
+/* the centred pill */
+.pill{
+  position:absolute;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:.2rem;
+  padding:.3rem;border-radius:999px;
+  background:rgba(255,255,255,.4);
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    inset 0 -1px 0 rgba(255,255,255,.25),
+    0 6px 22px rgba(22,22,22,.13);
+}
+.pill a{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.46rem .92rem;border-radius:999px;
+  font-size:.82rem;font-weight:600;letter-spacing:-.005em;
+  text-decoration:none;color:var(--ink);
+  transition:background .18s ease, transform .18s ease;
+  white-space:nowrap;
+}
+.pill a:hover{background:rgba(255,255,255,.62)}
+.pill a[aria-current="page"]{
+  background:rgba(255,255,255,.78);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.9), 0 1px 4px rgba(22,22,22,.08);
+}
+.pill a[aria-current="page"]::after{
+  content:"";position:absolute;
+}
+.pill svg{width:15px;height:15px;display:block}
+
+/* second row — section sub-nav */
+.subnav{
+  display:flex;align-items:center;gap:.18rem;
+  padding:.26rem;border-radius:999px;
+  background:rgba(255,255,255,.34);
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.75),
+    0 4px 16px rgba(22,22,22,.1);
+}
+.subnav a{
+  padding:.36rem .8rem;border-radius:999px;
+  font-size:.73rem;font-weight:600;letter-spacing:.01em;
+  text-decoration:none;color:var(--ink);opacity:.72;
+  transition:background .18s ease, opacity .18s ease;
+  white-space:nowrap;
+}
+.subnav a:hover{opacity:1;background:rgba(255,255,255,.5)}
+.subnav a[aria-current="page"]{
+  opacity:1;background:rgba(255,255,255,.72);
+  box-shadow:0 0 0 1px rgba(246,116,81,.5);
+}
+
+/* dark-ground variant — nav over the sunset */
+.nav.on-dark .pill a,
+.nav.on-dark .subnav a{color:var(--ink)}
+
+@media (max-width:720px){
+  .navrow{justify-content:flex-start}
+  .pill{position:static;transform:none;margin-left:auto}
+  .pill a{padding:.42rem .7rem;font-size:.78rem}
+  .brand img{height:22px}
+  .subnav{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+
+/* ==========================================================================
+   Shared bits
+   ========================================================================== */
+
+.glassbtn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.85rem 1.5rem;border-radius:999px;
+  font-family:var(--body);font-size:.95rem;font-weight:600;
+  text-decoration:none;color:var(--ink);border:0;cursor:pointer;
+  background:rgba(255,255,255,.44);
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 0 -1px 0 rgba(255,255,255,.3),
+    0 8px 26px rgba(22,22,22,.16);
+  transition:transform .22s cubic-bezier(.2,.8,.3,1), background .22s ease, box-shadow .22s ease;
+}
+.glassbtn:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.66);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    0 14px 34px rgba(22,22,22,.2);
+}
+.glassbtn .arr{color:var(--coral);font-weight:700}
+
+.wrap{max-width:var(--wide);margin:0 auto;padding:0 var(--gut)}
+
+.eyebrow{
+  font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--coral);margin:0 0 .9rem;
+}
+
+h1,h2,h3{text-wrap:balance}
+
+footer.site{
+  border-top:1px solid var(--ink);
+  margin-top:3.5rem;padding:1.3rem 0 3rem;
+  font-size:.78rem;color:var(--ink-2);line-height:1.6;
+}
+footer.site a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--coral)}
+footer.site a:hover{background:var(--peach)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+  }
+}
