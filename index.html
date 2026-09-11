@@ -1,23 +1,171 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#ADF1FF" />
-  <meta name="description" content="Agora — Social connection for young adults. Research and writing on how young adults connect, gather, and build community." />
-  <title>Agora — Social Connection for Young Adults</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body class="home">
-  <main class="hero" aria-label="Agora home">
-    <img class="hero__image" src="assets/agora-hero.png" alt="Sunlit Mediterranean-style terrace overlooking Los Angeles, with a bicycle, chess table, palms and a basketball court." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FCC99C">
+<title>Agora — Social Connection for Young Adults</title>
+<meta name="description" content="Agora — social connection for young adults. Research and writing on how young adults connect, gather, and build community.">
+<link rel="icon" href="/assets/agora-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+html,body{height:100%}
+body{overflow:hidden;background:#F6C48E}
 
-    <!-- Invisible hit areas sit over the two buttons already designed into the image.
-         This keeps the artwork visually exact while making both buttons fully clickable. -->
-    <nav class="hero__links" aria-label="Agora sections">
-      <a class="hero__hit hero__hit--research" href="research.html" aria-label="Open Research"></a>
-      <a class="hero__hit hero__hit--writing" href="writing.html" aria-label="Open Writing"></a>
+.stage{position:fixed;inset:0;overflow:hidden}
+.ken{
+  position:absolute;inset:0;will-change:transform;
+  animation:walkout 56s cubic-bezier(.45,0,.55,1) infinite alternate;
+}
+@keyframes walkout{
+  from{transform:scale(1)}
+  to  {transform:scale(1.062)}
+}
+.plate{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 52%;
+  user-select:none;-webkit-user-drag:none;
+}
+.stage::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  background:
+    radial-gradient(62% 46% at 50% 46%, rgba(255,246,232,.3) 0%, rgba(255,246,232,0) 70%),
+    linear-gradient(180deg, rgba(255,250,240,.2) 0%, rgba(255,250,240,0) 24%);
+  box-shadow:inset 0 0 190px 56px rgba(126,78,44,.17);
+}
+
+/* ---------- content ---------- */
+.content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
+
+.masthead{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:1rem;padding:clamp(1.2rem,3.6vh,2.4rem) clamp(1.2rem,3.4vw,2.8rem) 0;
+}
+.tagline{
+  margin:0;white-space:nowrap;
+  font-size:.66rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  line-height:1.75;color:#2A1B10;
+  text-shadow:0 1px 14px rgba(255,246,230,.95);
+  opacity:0;animation:fadeup .8s ease .25s forwards;
+}
+
+
+.lockup{
+  flex:none;line-height:0;
+  opacity:0;animation:fadeup .9s ease .1s forwards;
+}
+.lockup img{
+  height:clamp(46px,6.4vh,74px);width:auto;
+  filter:drop-shadow(0 2px 18px rgba(255,246,230,.85));
+}
+
+.mid{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:0 var(--gut);
+}
+.doors{
+  display:flex;flex-wrap:wrap;gap:clamp(.7rem,1.6vw,1.3rem);justify-content:center;
+  opacity:0;animation:fadeup .9s ease .55s forwards;
+}
+
+/* the two doors — peach and sky, still glass */
+.door{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:clamp(11rem,17vw,15rem);
+  padding:1.05rem 2.2rem;border-radius:999px;
+  font-size:.9rem;font-weight:600;letter-spacing:.17em;text-transform:uppercase;
+  text-decoration:none;color:#241608;
+  backdrop-filter:blur(22px) saturate(200%);
+  -webkit-backdrop-filter:blur(22px) saturate(200%);
+  transition:transform .24s cubic-bezier(.2,.8,.3,1), background .24s ease, box-shadow .24s ease;
+}
+.door.peach{
+  background:rgba(251,189,133,.62);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    inset 0 0 0 1px rgba(255,232,206,.6),
+    0 12px 36px rgba(122,64,26,.24);
+}
+.door.peach:hover{
+  background:rgba(251,189,133,.8);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 0 0 1px rgba(255,240,222,.8),
+    0 18px 44px rgba(122,64,26,.3);
+}
+.door.sky{
+  background:rgba(156,231,250,.6);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    inset 0 0 0 1px rgba(214,247,255,.6),
+    0 12px 36px rgba(28,84,110,.22);
+}
+.door.sky:hover{
+  background:rgba(156,231,250,.8);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 0 0 1px rgba(228,250,255,.85),
+    0 18px 44px rgba(28,84,110,.28);
+}
+.door:hover{transform:translateY(-3px)}
+
+.contact{
+  flex:none;align-self:flex-start;
+  padding:.55rem 1.1rem;border-radius:999px;
+  font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  text-decoration:none;color:#241608;white-space:nowrap;
+  background:rgba(255,255,255,.34);
+  backdrop-filter:blur(20px) saturate(190%);
+  -webkit-backdrop-filter:blur(20px) saturate(190%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    inset 0 0 0 1px rgba(255,255,255,.45),
+    0 8px 26px rgba(122,64,26,.2);
+  opacity:0;animation:fadeup .9s ease .85s forwards;
+  transition:background .22s ease, transform .22s ease;
+}
+.contact:hover{background:rgba(255,255,255,.55);transform:translateY(-2px)}
+
+@keyframes fadeup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+@media (max-width:760px){
+  .masthead{flex-direction:column;align-items:center;text-align:center;gap:.9rem}
+  .contact{align-self:center}
+  .tagline{max-width:none;letter-spacing:.2em;font-size:.62rem}
+  .doors{flex-direction:column;align-items:stretch;width:100%;max-width:19rem}
+  .door{min-width:0;padding:.95rem 1.4rem}
+  .plate{object-position:58% 52%}
+}
+@media (prefers-reduced-motion:reduce){ .ken{animation:none} }
+</style>
+</head>
+<body>
+
+<div class="stage" aria-hidden="true">
+  <div class="ken">
+    <img class="plate" src="/assets/home-hero.jpg" alt="">
+  </div>
+</div>
+
+<div class="content">
+
+  <header class="masthead">
+    <p class="tagline">Social connection<br>for young adults</p>
+    <span class="lockup"><img src="/assets/agora-mark.png" alt="Agora"></span>
+    <a class="contact" href="mailto:maxsamberg24@gmail.com">Get in touch</a>
+  </header>
+
+  <main class="mid">
+    <nav class="doors" aria-label="Agora sections">
+      <a class="door peach" href="/research/">Research</a>
+      <a class="door sky" href="/writing/">Writing</a>
     </nav>
   </main>
+
+</div>
+
 </body>
 </html>

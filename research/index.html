@@ -23,15 +23,6 @@ body{overflow:hidden;background:#F3C89B}
   will-change:transform,opacity;
   user-select:none;-webkit-user-drag:none;
 }
-/* two near-identical frames, cross-fading — the light and clouds shift */
-.plate.a{animation:breatheA 44s ease-in-out infinite}
-.plate.b{opacity:0;animation:breatheB 44s ease-in-out infinite}
-@keyframes breatheA{
-  0%,44%{opacity:1} 50%,94%{opacity:0} 100%{opacity:1}
-}
-@keyframes breatheB{
-  0%,44%{opacity:0} 50%,94%{opacity:1} 100%{opacity:0}
-}
 
 /* outer layer takes the cursor parallax, inner takes the slow ambient drift —
    two separate elements so the transforms never fight each other */
@@ -42,11 +33,12 @@ body{overflow:hidden;background:#F3C89B}
 }
 .ken{
   position:absolute;inset:0;will-change:transform;
-  animation:driftscene 68s ease-in-out infinite alternate;
+  animation:driftscene 52s cubic-bezier(.45,0,.55,1) infinite alternate;
 }
+/* a slow walk out onto the terrace — the view opens, then eases back */
 @keyframes driftscene{
-  from{transform:scale(1.006) translate3d(-.28%,.16%,0)}
-  to  {transform:scale(1.042) translate3d(.34%,-.22%,0)}
+  from{transform:scale(1)}
+  to  {transform:scale(1.062)}
 }
 
 /* warm light pooling up from the horizon, and depth at the frame edge */
@@ -62,8 +54,8 @@ body{overflow:hidden;background:#F3C89B}
 .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
 .hero{
   flex:1;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:calc(var(--navh) + 1rem) var(--gut) 0;text-align:center;
+  align-items:center;justify-content:flex-start;
+  padding:calc(var(--navh) + clamp(1.5rem,6vh,4.6rem)) var(--gut) 0;text-align:center;
 }
 .hero .eyebrow{
   color:#2A1B10;opacity:0;letter-spacing:.26em;font-size:.66rem;
@@ -78,19 +70,19 @@ h1{
 }
 h1 .w{display:inline-block;opacity:0;transform:translateY(.36em);
   animation:fadeup .72s cubic-bezier(.2,.8,.3,1) forwards}
-h1 .accent{font-style:italic;color:#C4441F;text-shadow:0 2px 26px rgba(255,246,230,.8)}
+h1 .accent{font-style:italic;color:#E32A5B;text-shadow:0 2px 22px rgba(255,240,246,.85), 0 1px 2px rgba(255,246,230,.7)}
 @keyframes fadeup{to{opacity:1;transform:none}}
 
 .standfirst{
-  margin:1.5rem 0 0;max-width:38ch;
-  font-size:1.02rem;line-height:1.5;color:#2A1B10;
+  margin:clamp(1.4rem,4.5vh,2.6rem) 0 0;max-width:56ch;
+  font-size:1.05rem;line-height:1.55;color:#2A1B10;
   opacity:0;animation:fadeup .8s ease 1.55s forwards;
   text-shadow:0 1px 14px rgba(255,246,230,.95);
 }
 
 .doors{
   display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center;
-  padding:0 var(--gut) clamp(2.2rem,9vh,5rem);
+  padding:0 var(--gut) clamp(1.1rem,3.4vh,2.2rem);
   opacity:0;animation:fadeup .9s ease 1.85s forwards;
 }
 .doors .glassbtn{
@@ -118,7 +110,6 @@ h1 .accent{font-style:italic;color:#C4441F;text-shadow:0 2px 26px rgba(255,246,2
 }
 @media (max-height:600px){.standfirst{display:none}}
 @media (prefers-reduced-motion:reduce){
-  .plate.b{display:none}
   .ken{animation:none}
   .drift{inset:0}
 }
@@ -129,8 +120,7 @@ h1 .accent{font-style:italic;color:#C4441F;text-shadow:0 2px 26px rgba(255,246,2
 <div class="stage" aria-hidden="true">
   <div class="drift" id="drift">
     <div class="ken">
-      <img class="plate a" src="/assets/terrace-a.jpg" alt="">
-      <img class="plate b" src="/assets/terrace-b.jpg" alt="">
+      <img class="plate" src="/assets/terrace-a.jpg" alt="">
     </div>
   </div>
 </div>
@@ -138,7 +128,7 @@ h1 .accent{font-style:italic;color:#C4441F;text-shadow:0 2px 26px rgba(255,246,2
 <div class="content">
 
   <nav class="nav" aria-label="Main">
-    <a class="brand" href="/"><img src="/assets/agora-mark.png" alt="Agora"></a>
+    <span class="brand"><img src="/assets/agora-mark.png" alt="Agora"></span>
     <div class="pill">
       <a href="/" aria-label="Home">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>
