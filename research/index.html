@@ -19,27 +19,11 @@ body{overflow:hidden;background:#F3C89B}
 .plate{
   position:absolute;inset:0;
   width:100%;height:100%;
-  object-fit:cover;object-position:50% 46%;
-  will-change:transform,opacity;
+  object-fit:cover;object-position:50% 50%;
   user-select:none;-webkit-user-drag:none;
 }
-
-/* outer layer takes the cursor parallax, inner takes the slow ambient drift —
-   two separate elements so the transforms never fight each other */
-.drift{
-  position:absolute;inset:0;
-  will-change:transform;
-  transition:transform 1.1s cubic-bezier(.18,.7,.28,1);
-}
-.ken{
-  position:absolute;inset:0;will-change:transform;
-  animation:driftscene 52s cubic-bezier(.45,0,.55,1) infinite alternate;
-}
-/* a slow walk out onto the terrace — the view opens, then eases back */
-@keyframes driftscene{
-  from{transform:scale(1)}
-  to  {transform:scale(1.062)}
-}
+.drift{position:absolute;inset:0}
+.ken{position:absolute;inset:0}
 
 /* warm light pooling up from the horizon, and depth at the frame edge */
 .stage::after{
@@ -65,8 +49,8 @@ body{overflow:hidden;background:#F3C89B}
 }
 h1{
   font-family:var(--serif);font-weight:400;
-  font-size:clamp(2.2rem,5.4vw,4.86rem);line-height:1.02;letter-spacing:-.018em;
-  margin:0;max-width:none;width:min(1020px,76vw);text-wrap:wrap;color:#161616;
+  font-size:clamp(2.5rem,6.6vw,5.95rem);line-height:1.02;letter-spacing:-.018em;
+  margin:0;max-width:none;width:min(1080px,78vw);text-wrap:wrap;color:#161616;
   text-shadow:0 2px 34px rgba(255,246,230,.72), 0 1px 3px rgba(255,246,230,.9);
 }
 h1 .w{display:inline-block;opacity:0;transform:translateY(.36em);
@@ -75,7 +59,7 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
 @keyframes fadeup{to{opacity:1;transform:none}}
 
 .standfirst{
-  margin:clamp(1rem,4.7vh,2.8rem) 0 0;max-width:none;width:min(880px,72vw);
+  margin:clamp(.5rem,1.8vh,1.6rem) 0 0;max-width:none;width:min(880px,72vw);
   font-size:1.05rem;line-height:1.55;color:#2A1B10;
   opacity:0;animation:fadeup .8s ease 1.55s forwards;
   text-shadow:0 1px 14px rgba(255,246,230,.95);
@@ -107,13 +91,8 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
   .doors{gap:.55rem;flex-direction:column;align-items:stretch;max-width:21rem;margin:0 auto}
   .doors .glassbtn{justify-content:center;padding:.9rem 1.4rem}
   .standfirst{font-size:.94rem}
-  .plate{object-position:56% 46%}
 }
 @media (max-height:600px){.standfirst{display:none}}
-@media (prefers-reduced-motion:reduce){
-  .ken{animation:none}
-  .drift{inset:0}
-}
 </style>
 </head>
 <body>
@@ -174,22 +153,6 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
     if (pi === 0) head.appendChild(document.createElement('br'));
   });
 
-  /* cursor parallax — a few pixels, no more */
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var drift = document.getElementById('drift');
-  var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
-  function apply(){
-    cx += (tx - cx) * 0.055;
-    cy += (ty - cy) * 0.055;
-    drift.style.transform = 'translate3d(' + (cx * 16) + 'px,' + (cy * 11) + 'px,0)';
-    if (Math.abs(tx - cx) > 0.002 || Math.abs(ty - cy) > 0.002) raf = requestAnimationFrame(apply);
-    else raf = null;
-  }
-  window.addEventListener('mousemove', function(e){
-    tx = (e.clientX / window.innerWidth - 0.5) * -1;
-    ty = (e.clientY / window.innerHeight - 0.5) * -1;
-    if (!raf) raf = requestAnimationFrame(apply);
-  }, {passive:true});
 })();
 </script>
 </body>
