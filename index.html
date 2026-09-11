@@ -3,143 +3,130 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#FCC99C">
+<meta name="theme-color" content="#ADF1FF">
 <title>Agora — Social Connection for Young Adults</title>
 <meta name="description" content="Agora — social connection for young adults. Research and writing on how young adults connect, gather, and build community.">
-<link rel="icon" href="/assets/agora-mark.png">
+<link rel="icon" href="/assets/agora-pin.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap">
 <style>
-html,body{height:100%}
-body{overflow:hidden;background:#F6C48E}
+:root{
+  --peach:#FCC99C;
+  --sky:#ADF1FF;
+  --ink:#161616;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  overflow:hidden;background:#BFE0F2;color:var(--ink);
+  font-family:Inter,"Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
 
+/* ---------- the view ---------- */
 .stage{position:fixed;inset:0;overflow:hidden}
 .ken{
   position:absolute;inset:0;will-change:transform;
   animation:walkout 56s cubic-bezier(.45,0,.55,1) infinite alternate;
 }
-@keyframes walkout{
-  from{transform:scale(1)}
-  to  {transform:scale(1.062)}
-}
+@keyframes walkout{from{transform:scale(1)} to{transform:scale(1.06)}}
 .plate{
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;object-position:50% 52%;
   user-select:none;-webkit-user-drag:none;
 }
-.stage::after{
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
-  background:
-    radial-gradient(62% 46% at 50% 46%, rgba(255,246,232,.3) 0%, rgba(255,246,232,0) 70%),
-    linear-gradient(180deg, rgba(255,250,240,.2) 0%, rgba(255,250,240,0) 24%);
-  box-shadow:inset 0 0 190px 56px rgba(126,78,44,.17);
+
+/* ---------- the stack, centred ---------- */
+.content{
+  position:relative;z-index:10;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:0 1.4rem;text-align:center;
 }
 
-/* ---------- content ---------- */
-.content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
-
-.masthead{
-  display:flex;align-items:flex-start;justify-content:space-between;
-  gap:1rem;padding:clamp(1.2rem,3.6vh,2.4rem) clamp(1.2rem,3.4vw,2.8rem) 0;
+.pin{
+  height:clamp(78px,11vh,126px);width:auto;
+  filter:drop-shadow(0 3px 16px rgba(255,252,246,.8));
+  opacity:0;animation:rise .9s cubic-bezier(.2,.8,.3,1) .1s forwards;
 }
+
+.wordmark{
+  font-family:"Playfair Display",Georgia,serif;font-weight:500;
+  font-size:clamp(3.4rem,9.4vw,7rem);line-height:.98;letter-spacing:-.015em;
+  margin:.28em 0 0;color:#12172B;
+  text-shadow:0 2px 26px rgba(255,252,246,.7);
+  opacity:0;animation:rise .9s cubic-bezier(.2,.8,.3,1) .25s forwards;
+}
+
 .tagline{
-  margin:0;white-space:nowrap;
-  font-size:.66rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
-  line-height:1.75;color:#2A1B10;
-  text-shadow:0 1px 14px rgba(255,246,230,.95);
-  opacity:0;animation:fadeup .8s ease .25s forwards;
+  margin:.85rem 0 0;
+  font-size:clamp(.68rem,1.15vw,.88rem);font-weight:500;
+  letter-spacing:.34em;text-transform:uppercase;color:#1B2236;
+  text-shadow:0 1px 14px rgba(255,252,246,.92);
+  opacity:0;animation:rise .9s cubic-bezier(.2,.8,.3,1) .42s forwards;
 }
 
-
-.lockup{
-  flex:none;line-height:0;
-  opacity:0;animation:fadeup .9s ease .1s forwards;
-}
-.lockup img{
-  height:clamp(46px,6.4vh,74px);width:auto;
-  filter:drop-shadow(0 2px 18px rgba(255,246,230,.85));
-}
-
-.mid{
-  flex:1;display:flex;align-items:center;justify-content:center;
-  padding:0 var(--gut);
-}
 .doors{
-  display:flex;flex-wrap:wrap;gap:clamp(.7rem,1.6vw,1.3rem);justify-content:center;
-  opacity:0;animation:fadeup .9s ease .55s forwards;
+  display:flex;flex-wrap:wrap;gap:clamp(.8rem,1.8vw,1.5rem);justify-content:center;
+  margin-top:clamp(1.8rem,4.4vh,3rem);
+  opacity:0;animation:rise .9s cubic-bezier(.2,.8,.3,1) .6s forwards;
 }
-
-/* the two doors — peach and sky, still glass */
 .door{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-width:clamp(11rem,17vw,15rem);
-  padding:1.05rem 2.2rem;border-radius:999px;
-  font-size:.9rem;font-weight:600;letter-spacing:.17em;text-transform:uppercase;
-  text-decoration:none;color:#241608;
-  backdrop-filter:blur(22px) saturate(200%);
-  -webkit-backdrop-filter:blur(22px) saturate(200%);
+  display:inline-flex;align-items:center;justify-content:center;gap:1.1rem;
+  min-width:clamp(12rem,17vw,15.5rem);
+  padding:.95rem 2rem;border-radius:999px;
+  font-family:"Playfair Display",Georgia,serif;font-weight:500;
+  font-size:clamp(1.05rem,1.5vw,1.28rem);letter-spacing:.005em;
+  text-decoration:none;color:#12172B;
+  backdrop-filter:blur(22px) saturate(190%);
+  -webkit-backdrop-filter:blur(22px) saturate(190%);
   transition:transform .24s cubic-bezier(.2,.8,.3,1), background .24s ease, box-shadow .24s ease;
 }
-.door.peach{
-  background:rgba(251,189,133,.62);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.85),
-    inset 0 0 0 1px rgba(255,232,206,.6),
-    0 12px 36px rgba(122,64,26,.24);
-}
-.door.peach:hover{
-  background:rgba(251,189,133,.8);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,1),
-    inset 0 0 0 1px rgba(255,240,222,.8),
-    0 18px 44px rgba(122,64,26,.3);
-}
-.door.sky{
-  background:rgba(156,231,250,.6);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.85),
-    inset 0 0 0 1px rgba(214,247,255,.6),
-    0 12px 36px rgba(28,84,110,.22);
-}
-.door.sky:hover{
-  background:rgba(156,231,250,.8);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,1),
-    inset 0 0 0 1px rgba(228,250,255,.85),
-    0 18px 44px rgba(28,84,110,.28);
-}
+.door .arr{font-family:Inter,sans-serif;font-size:1.05em;line-height:1}
 .door:hover{transform:translateY(-3px)}
 
-.contact{
-  flex:none;align-self:flex-start;
-  padding:.55rem 1.1rem;border-radius:999px;
-  font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-  text-decoration:none;color:#241608;white-space:nowrap;
-  background:rgba(255,255,255,.34);
-  backdrop-filter:blur(20px) saturate(190%);
-  -webkit-backdrop-filter:blur(20px) saturate(190%);
+.door.research{
+  background:rgba(252,201,156,.66);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.85),
-    inset 0 0 0 1px rgba(255,255,255,.45),
-    0 8px 26px rgba(122,64,26,.2);
-  opacity:0;animation:fadeup .9s ease .85s forwards;
-  transition:background .22s ease, transform .22s ease;
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 0 0 0 1px rgba(255,228,198,.7),
+    0 12px 34px rgba(140,80,34,.24);
 }
-.contact:hover{background:rgba(255,255,255,.55);transform:translateY(-2px)}
-
-@keyframes fadeup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-
-@media (max-width:760px){
-  .masthead{flex-direction:column;align-items:center;text-align:center;gap:.9rem}
-  .contact{align-self:center}
-  .tagline{max-width:none;letter-spacing:.2em;font-size:.62rem}
-  .doors{flex-direction:column;align-items:stretch;width:100%;max-width:19rem}
-  .door{min-width:0;padding:.95rem 1.4rem}
-  .plate{object-position:58% 52%}
+.door.research:hover{
+  background:rgba(252,201,156,.86);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 0 0 1px rgba(255,238,216,.85),
+    0 18px 42px rgba(140,80,34,.3);
 }
-@media (prefers-reduced-motion:reduce){ .ken{animation:none} }
+.door.writing{
+  background:rgba(173,241,255,.62);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 0 0 0 1px rgba(212,247,255,.7),
+    0 12px 34px rgba(30,88,116,.22);
+}
+.door.writing:hover{
+  background:rgba(173,241,255,.84);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 0 0 1px rgba(230,251,255,.9),
+    0 18px 42px rgba(30,88,116,.28);
+}
+
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+@media (max-width:640px){
+  .tagline{letter-spacing:.24em;font-size:.64rem}
+  .doors{flex-direction:column;align-items:stretch;width:100%;max-width:17.5rem}
+  .door{min-width:0;justify-content:space-between;padding:.85rem 1.5rem}
+  .plate{object-position:56% 52%}
+}
+@media (prefers-reduced-motion:reduce){
+  .ken{animation:none}
+  .pin,.wordmark,.tagline,.doors{animation:none;opacity:1}
+}
 </style>
 </head>
 <body>
@@ -150,22 +137,15 @@ body{overflow:hidden;background:#F6C48E}
   </div>
 </div>
 
-<div class="content">
-
-  <header class="masthead">
-    <p class="tagline">Social connection<br>for young adults</p>
-    <span class="lockup"><img src="/assets/agora-mark.png" alt="Agora"></span>
-    <a class="contact" href="mailto:maxsamberg24@gmail.com">Get in touch</a>
-  </header>
-
-  <main class="mid">
-    <nav class="doors" aria-label="Agora sections">
-      <a class="door peach" href="/research/">Research</a>
-      <a class="door sky" href="/writing/">Writing</a>
-    </nav>
-  </main>
-
-</div>
+<main class="content">
+  <img class="pin" src="/assets/agora-pin.png" alt="">
+  <h1 class="wordmark">Agora</h1>
+  <p class="tagline">Social connection for young adults</p>
+  <nav class="doors" aria-label="Agora sections">
+    <a class="door research" href="/research/">Research <span class="arr">&rarr;</span></a>
+    <a class="door writing" href="/writing/">Writing <span class="arr">&rarr;</span></a>
+  </nav>
+</main>
 
 </body>
 </html>
