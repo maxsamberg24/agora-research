@@ -49,7 +49,7 @@ body{overflow:hidden;background:#F3C89B}
 .hero{
   --horizon:min(52.8vh, 1.58vw + 50vh);
   position:absolute;left:0;right:0;
-  bottom:calc(100vh - var(--horizon) + 46px);
+  bottom:calc(100vh - var(--horizon) + 34px);
   display:flex;flex-direction:column;align-items:center;
   padding:0 var(--gut);text-align:center;
 }
@@ -64,8 +64,8 @@ body{overflow:hidden;background:#F3C89B}
 }
 h1{
   font-family:var(--serif);font-weight:400;
-  /* the vh term keeps the headline off the byline on short windows */
-  font-size:clamp(2.5rem,min(6.6vw,13vh),5.95rem);line-height:1.02;letter-spacing:-.018em;
+  /* the vh term keeps the headline clear of the leaves on short windows */
+  font-size:clamp(2.2rem,min(6.05vw,9.2vh),5.45rem);line-height:1.02;letter-spacing:-.018em;
   margin:0;max-width:none;width:min(1080px,78vw);text-wrap:wrap;color:#161616;
   text-shadow:0 2px 34px rgba(255,246,230,.72), 0 1px 3px rgba(255,246,230,.9);
 }
@@ -141,7 +141,6 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
     </div>
   </nav>
 
-  <p class="eyebrow">Max Samberg · Summer 2026 · Qualitative research</p>
   </div>
 
   <div class="hero">
@@ -150,8 +149,8 @@ h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,2
   </div>
 
   <div class="doors">
-    <a class="glassbtn" href="/research/presentation/">Presentation</a>
     <a class="glassbtn" href="/research/summary/">Summary</a>
+    <a class="glassbtn" href="/research/presentation/">Presentation</a>
     <a class="glassbtn" href="/research/reports/">Reports</a>
   </div>
 
