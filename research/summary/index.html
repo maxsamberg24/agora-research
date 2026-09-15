@@ -86,12 +86,21 @@ p{margin:0 0 1rem;max-width:var(--measure)}
 /* method band */
 .method{
   background:var(--coral);color:var(--white);
-  margin:2.4rem 0 0;padding:1rem 0;
+  margin:2.4rem 0 0;padding:1.5rem 0;
 }
-.method .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;align-items:baseline}
-.method .lbl{font-family:var(--heavy);font-size:.8rem;letter-spacing:.04em}
-.method .items{font-size:.86rem;font-weight:600;display:flex;flex-wrap:wrap;gap:.35rem .95rem}
-.method .items span b{font-weight:700}
+.method .wrap{display:flex;flex-wrap:wrap;gap:.8rem 2.4rem;align-items:baseline}
+.method .lbl{font-family:var(--heavy);font-size:1rem;letter-spacing:.04em}
+.method .items{
+  font-size:1.05rem;display:flex;flex-wrap:wrap;
+  gap:.7rem 2.4rem;flex:1;justify-content:space-between;
+}
+/* label upright and lettered, value italic — so they never read as one word */
+.method .items > span{font-family:var(--serif);font-style:italic;white-space:nowrap}
+.method .items b{
+  font-family:var(--body);font-style:normal;font-weight:700;
+  font-size:.7em;letter-spacing:.14em;text-transform:uppercase;
+  opacity:.82;margin-right:.6em;
+}
 
 /* findings */
 .findings{display:grid;grid-template-columns:1fr;gap:2rem}
@@ -210,14 +219,14 @@ ul.finds b{font-weight:700}
       <li>
         <a href="/research/reports/#background">
           <span class="n">12.8 → 6.5</span>
-          <span class="t" style="flex:1">hours a week with friends, ages 18–29, 2010–2019 — it halved <b>before</b> COVID</span>
+          <span class="t" style="flex:1">hours a week with friends, ages 18–29, 2010–2019 — and now sits at 5 hours</span>
           <span class="more">The background →</span>
         </a>
       </li>
       <li>
         <a href="/research/reports/#background">
           <span class="n">72% → 50%</span>
-          <span class="t" style="flex:1">share of 18–34s who drink at all, 2001 to today. Bar traffic held flat anyway.</span>
+          <span class="t" style="flex:1">share of 18–34s who drink at all, 2001 to today — half now don't</span>
           <span class="more">The background →</span>
         </a>
       </li>
