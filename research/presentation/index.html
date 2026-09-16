@@ -116,20 +116,20 @@ body{background:var(--ghost)}
 
 <a class="glassbtn dl" href="/assets/agora-research-presentation.pdf" download>Download PDF</a>
 
-<div class="counter"><span id="cur">1</span><span class="sep">/</span><span>37</span><span class="ttl" id="ttl">Title</span></div>
+<div class="counter"><span id="cur">1</span><span class="sep">/</span><span>39</span><span class="ttl" id="ttl">Title</span></div>
 
 <div class="hint"><span>Scroll</span><span class="chev">↓</span></div>
 
 <script>
 (function(){
   var TITLES = ["Title","Background","The anxious generation grew up","Not just a result of COVID","A serious health problem",
-  "Drinking has collapsed, but not the bar","Solutions aim at children","Summary","The collision","The same wall in three cities",
-  "The research","What I set out to learn","How I gathered information","Who I talked to","Insights",
-  "0 of 20","Friendships form in recurring formats","Meeting people isn't hard","Friend groups don't merge","What people do instead of bars",
-  "The default is staying in","Open to new people, wary of strangers","Discovery is not the bottleneck","Apps are good at logistics, bad at people","The one app that's working",
-  "Opportunities","The four core problems","The bar's product was never alcohol","The middle ground","Why nothing fills the middle",
-  "The early adopters aren't the problem","Nobody leaves the slide","Looking ahead","The lesson","The bet",
-  "Who we're building for","Close"];
+  "Drinking has collapsed, but not the bar","Solutions aim at children","Summary","The collision","The social infrastructure gap years",
+  "The same wall in three cities","The research","What I set out to learn","How I gathered information","Who I talked to",
+  "Insights","0 of 20","Friendships form in recurring formats","Meeting people isn't hard","Friend groups don't merge",
+  "What people do instead of bars","The default is staying in","Open to new people, wary of strangers","Discovery is not the bottleneck","Apps are good at logistics, bad at people",
+  "The one app that's working","Opportunities","The four core problems","The bar's product was never alcohol","The middle ground",
+  "Why nothing fills the middle","The early adopters were never the problem","Nobody leaves the slide","The weekend loop","Looking ahead",
+  "The lesson","The bet","Who we're building for","Close"];
 
   var deck = document.getElementById('deck');
   var cur = document.getElementById('cur');
@@ -138,7 +138,7 @@ body{background:var(--ghost)}
 
   var pad = function(n){ return n < 10 ? '0' + n : '' + n; };
 
-  for (var i = 1; i <= 37; i++){
+  for (var i = 1; i <= 39; i++){
     var sec = document.createElement('section');
     sec.className = 'slide';
     sec.setAttribute('data-n', i);
@@ -160,14 +160,14 @@ body{background:var(--ghost)}
         var n = parseInt(en.target.getAttribute('data-n'), 10);
         cur.textContent = n;
         ttl.textContent = TITLES[n-1];
-        rail.style.width = (n / 37 * 100) + '%';
+        rail.style.width = (n / 39 * 100) + '%';
       }
     });
   }, {threshold:[0, .35, .6]});
   slides.forEach(function(s){ io.observe(s); });
 
   slides[0].classList.add('in');
-  rail.style.width = (1/37*100) + '%';
+  rail.style.width = (1/39*100) + '%';
 
   /* eased scroll of our own — native 'smooth' is too abrupt over a full screen */
   var animating = false;
