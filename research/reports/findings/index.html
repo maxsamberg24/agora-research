@@ -13,16 +13,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 <style>
-html,body{min-height:100%}
+html,body{height:100%}
 body{
-  overflow-y:auto;
+  overflow:hidden;
   background:linear-gradient(165deg,#ADF1FF 0%,#9FE8F8 58%,#8FE3F5 100%);
 }
 .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
 .mid{
   flex:1;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;
-  padding:2.5rem var(--gut) 4rem;
+  padding:1rem var(--gut) 5rem;
 }
 .num{
   font-family:var(--heavy);font-size:clamp(4rem,13vw,9rem);line-height:.82;
@@ -55,27 +55,6 @@ p.when{
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes upr{from{opacity:0;transform:translateY(14px) rotate(-1.6deg)}to{opacity:1;transform:rotate(-1.6deg)}}
 
-.sources{
-  width:min(52rem,100%);margin:2.6rem auto 0;text-align:left;
-  border-top:1.5px solid rgba(22,22,22,.28);padding-top:1.3rem;
-  opacity:0;animation:up .8s ease .95s forwards;
-}
-.sources h2{
-  font-family:var(--body);font-size:.66rem;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;margin:0 0 .9rem;opacity:.75;
-}
-.sources ul{list-style:none;margin:0;padding:0}
-.sources li{
-  font-size:.86rem;line-height:1.5;padding:.42rem 0;
-  border-top:1px solid rgba(22,22,22,.12);
-}
-.sources li:first-child{border-top:0}
-.sources li b{font-weight:700}
-.sources li span{opacity:.72}
-.sources a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--coral)}
-.sources a:hover{background:rgba(255,255,255,.55)}
-.sources p.note{font-size:.82rem;line-height:1.5;margin:.9rem 0 0;opacity:.75}
-@media (max-width:700px){ .sources li{font-size:.82rem} }
 </style>
 </head>
 <body>
@@ -103,20 +82,9 @@ p.when{
     <p class="num">02</p>
     <p class="kind">Primary research</p>
     <h1>Zero of twenty</h1>
-    <p class="sub">Being written up properly before it goes out. Ask me about it in the meantime.</p>
+    <p class="sub">Twenty interviews on how friendships actually form, with the method, the sample bias, and the raw quotes.</p>
     <p class="when">Coming soon.</p>
 
-  <section class="sources" aria-label="Sources">
-    <h2>Where these findings come from</h2>
-    <ul>
-      <li><b>Primary research</b> <span>— 20 qualitative interviews, ages 23–28, 14 men and 6 women, across NYC, LA, SF, San Diego, Chicago, Syracuse and Atlanta.</span></li>
-      <li><b>Instrument</b> <span>— a 7-question survey, every question open-ended.</span></li>
-      <li><b>Recruiting</b> <span>— friends and friends-of-friends, which is the sample's main limitation.</span></li>
-      <li><b>Standing</b> <span>— directional signal, not statistical proof.</span></li>
-      <li><b>Supporting literature</b> <span>— the exposure effect and the roughly 200 hours to a close friendship; Haidt, <em>The Anxious Generation</em>, alongside the critiques of it.</span></li>
-    </ul>
-    <p class="note">The full report will carry the method, the raw verbatims, and what I would do differently next round.</p>
-  </section>
 
     <p class="back"><a class="glassbtn" href="/research/reports/"><span class="arr">&larr;</span> All reports</a></p>
   </div>
