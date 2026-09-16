@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Infrastructure, not events — Agora Research</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+html,body{height:100%}
+body{
+  overflow:hidden;
+  background:linear-gradient(165deg,#FCC99C 0%,#FAB287 58%,#F79A72 100%);
+}
+.content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
+.mid{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:1rem var(--gut) 5rem;
+}
+.num{
+  font-family:var(--heavy);font-size:clamp(4rem,13vw,9rem);line-height:.82;
+  letter-spacing:-.05em;color:rgba(22,22,22,.14);margin:0 0 .35em;
+  opacity:0;animation:up .8s cubic-bezier(.2,.8,.3,1) .1s forwards;
+}
+.kind{
+  font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink);opacity:0;margin:0 0 .9rem;
+  animation:up .8s ease .25s forwards;
+}
+h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(2.2rem,6vw,3.9rem);line-height:1.04;letter-spacing:-.02em;
+  margin:0 0 1.1rem;max-width:18ch;
+  opacity:0;animation:up .8s cubic-bezier(.2,.8,.3,1) .35s forwards;
+}
+p.sub{
+  margin:0;max-width:40ch;font-size:1.02rem;line-height:1.5;color:var(--ink);
+  opacity:0;animation:up .8s ease .5s forwards;
+}
+p.when{
+  font-family:var(--hand);font-size:1.7rem;color:var(--ink);
+  margin:1.5rem 0 0;transform:rotate(-1.6deg);
+  opacity:0;animation:upr .8s ease .68s forwards;
+}
+.back{
+  margin-top:2rem;opacity:0;animation:up .8s ease .82s forwards;
+}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes upr{from{opacity:0;transform:translateY(14px) rotate(-1.6deg)}to{opacity:1;transform:rotate(-1.6deg)}}
+
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <nav class="nav" aria-label="Main">
+    <span class="brand"><img src="/assets/agora-mark.png" alt="Agora"></span>
+    <div class="pill">
+      <a href="/" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="/research/">Research</a>
+      <span class="sub">
+        <a href="/research/summary/">Summary</a>
+        <a href="/research/presentation/">Presentation</a>
+        <a href="/research/reports/" aria-current="page">Reports</a>
+      </span>
+      <a href="/writing/">Writing</a>
+    </div>
+  </nav>
+
+  <div class="mid">
+    <p class="num">03</p>
+    <p class="kind">The thesis</p>
+    <h1>Infrastructure, not events</h1>
+    <p class="sub">The case for what to build instead of the bar &mdash; and the four things I still don&#39;t know.</p>
+    <p class="when">Coming soon.</p>
+
+
+    <p class="back"><a class="glassbtn" href="/research/reports/"><span class="arr">&larr;</span> All reports</a></p>
+  </div>
+
+</div>
+</body>
+</html>

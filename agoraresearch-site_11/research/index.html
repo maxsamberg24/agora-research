@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Research — Agora</title>
+<meta name="description" content="Twenty conversations on how young adults connect socially — and why the bar keeps winning.">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+html,body{height:100%}
+body{overflow:hidden;background:#F3C89B}
+
+/* ---------- the window ---------- */
+.stage{position:fixed;inset:0;overflow:hidden}
+.plate{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:50% 50%;
+  user-select:none;-webkit-user-drag:none;
+}
+.drift{position:absolute;inset:0}
+.ken{position:absolute;inset:0}
+
+/* warm light pooling up from the horizon, and depth at the frame edge */
+.stage::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  background:
+    radial-gradient(58% 42% at 50% 40%, rgba(255,244,228,.34) 0%, rgba(255,244,228,0) 68%),
+    linear-gradient(180deg, rgba(255,248,236,.18) 0%, rgba(255,248,236,0) 26%);
+  box-shadow:inset 0 0 190px 56px rgba(126,78,44,.2);
+}
+
+/* ---------- content ---------- */
+.content{
+  position:relative;z-index:10;height:100%;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+
+/* The photo is object-fit:cover, so the horizon moves as the viewport ratio
+   changes. --horizon reproduces exactly where terrace-a.jpg's mountain line
+   lands, so the copy is pinned to the SKY rather than to the viewport.
+   Source plate is 1672x941 with the ridge at 52.8% of its height. */
+.hero{
+  --horizon:min(52.8vh, 1.58vw + 50vh);
+  position:absolute;left:0;right:0;
+  bottom:calc(100vh - var(--horizon) + 34px);
+  display:flex;flex-direction:column;align-items:center;
+  padding:0 var(--gut);text-align:center;
+}
+/* the byline sits in normal flow just under the bar, so it can never end up
+   underneath the nav pill however short the window gets */
+.top{flex:0 0 auto}
+.eyebrow{
+  color:#2A1B10;opacity:0;letter-spacing:.26em;font-size:.69rem;
+  margin:0;padding:0 var(--gut);text-align:center;
+  animation:fadeup .8s ease .2s forwards;
+  text-shadow:0 1px 16px rgba(255,244,226,.9);
+}
+h1{
+  font-family:var(--serif);font-weight:400;
+  /* the vh term keeps the headline clear of the leaves on short windows */
+  font-size:clamp(2.2rem,min(6.05vw,9.2vh),5.45rem);line-height:1.02;letter-spacing:-.018em;
+  margin:0;max-width:none;width:min(1080px,78vw);text-wrap:wrap;color:#161616;
+  text-shadow:0 2px 34px rgba(255,246,230,.72), 0 1px 3px rgba(255,246,230,.9);
+}
+h1 .w{display:inline-block;opacity:0;transform:translateY(.36em);
+  animation:fadeup .72s cubic-bezier(.2,.8,.3,1) forwards}
+h1 .accent{font-style:italic;color:#FC6646;text-shadow:0 2px 22px rgba(255,242,236,.85), 0 1px 2px rgba(255,246,230,.7)}
+@keyframes fadeup{to{opacity:1;transform:none}}
+
+.standfirst{
+  margin:clamp(.5rem,1.8vh,1.6rem) 0 0;max-width:none;width:min(880px,72vw);
+  font-size:1.05rem;line-height:1.55;color:#2A1B10;
+  opacity:0;animation:fadeup .8s ease 1.55s forwards;
+  text-shadow:0 1px 14px rgba(255,246,230,.95);
+}
+
+.doors{
+  display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center;
+  padding:0 var(--gut) clamp(1.1rem,5.7vh,3.4rem);
+  opacity:0;animation:fadeup .9s ease 1.85s forwards;
+}
+.doors .glassbtn{
+  font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  height:clamp(42px,3.4vw,52px);padding:0 2.1rem;color:#241608;
+  background:rgba(173,241,255,.6);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.8),
+    inset 0 0 0 1px rgba(255,255,255,.55),
+    0 10px 34px rgba(30,88,116,.22);
+}
+.doors .glassbtn:hover{
+  background:rgba(173,241,255,.82);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 0 0 1px rgba(255,255,255,.75),
+    0 16px 42px rgba(30,88,116,.28);
+}
+
+/* narrow screens: back to normal flow, the plate crops too hard to pin to */
+@media (max-width:860px){
+  .hero{position:static;flex:1;justify-content:center;padding:1rem var(--gut)}
+}
+@media (max-width:640px){
+  .doors{gap:.55rem;flex-direction:column;align-items:stretch;max-width:21rem;margin:0 auto}
+  .doors .glassbtn{justify-content:center;height:auto;padding:.9rem 1.4rem}
+  .standfirst{font-size:.94rem}
+}
+@media (max-height:600px){.standfirst{display:none}}
+</style>
+</head>
+<body>
+
+<div class="stage" aria-hidden="true">
+  <div class="drift" id="drift">
+    <div class="ken">
+      <img class="plate" src="/assets/terrace-a.jpg" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="top">
+  <nav class="nav" aria-label="Main">
+    <span class="brand"><img src="/assets/agora-mark.png" alt="Agora"></span>
+    <a class="contact" href="mailto:maxsamberg24@gmail.com">Get in touch</a>
+    <div class="pill">
+      <a href="/" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="/research/" aria-current="page">Research</a>
+      <a href="/writing/">Writing</a>
+    </div>
+  </nav>
+
+  </div>
+
+  <div class="hero">
+    <h1 id="head"></h1>
+    <p class="standfirst">Twenty conversations on how young adults connect socially — and why the bar keeps winning.</p>
+  </div>
+
+  <div class="doors">
+    <a class="glassbtn" href="/research/summary/">Summary</a>
+    <a class="glassbtn" href="/research/presentation/">Presentation</a>
+    <a class="glassbtn" href="/research/reports/">Reports</a>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  /* headline, revealed word by word */
+  var head = document.getElementById('head');
+  var parts = ["More ways to connect than ever.", "Less connection."];
+  var i = 0;
+  parts.forEach(function(part, pi){
+    part.split(' ').forEach(function(word){
+      var accent = pi === 1;            /* whole second line is the accent */
+      var s = document.createElement('span');
+      s.className = 'w' + (accent ? ' accent' : '');
+      s.textContent = word;
+      s.style.animationDelay = (0.4 + i * 0.085) + 's';
+      head.appendChild(s);
+      head.appendChild(document.createTextNode(' '));
+      i++;
+    });
+    if (pi === 0) head.appendChild(document.createElement('br'));
+  });
+
+})();
+</script>
+</body>
+</html>

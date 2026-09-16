@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ADF1FF">
+<title>Agora — Social Connection for Young Adults</title>
+<meta name="description" content="Agora — social connection for young adults. Research and writing on how young adults connect, gather, and build community.">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{
+  --peach:#FCC99C;
+  --sky:#ADF1FF;
+  --ink:#161616;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  overflow:hidden;background:#BFE0F2;color:var(--ink);
+  font-family:Inter,"Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+
+/* ---------- the view ---------- */
+.stage{position:fixed;inset:0;overflow:hidden}
+.ken{position:absolute;inset:0}
+.plate{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 50%;
+  user-select:none;-webkit-user-drag:none;
+}
+
+
+/* ---------- the stack ----------
+   home-hero.jpg is 1536x1024 and the ridge line behind the city sits at 64.3%
+   of its height. The plate is object-fit:cover, so where that line lands moves
+   with the viewport ratio — --skyline tracks it, and the stack is pinned above
+   it so the wordmark and buttons stay in the sky at every window size. */
+.content{
+  --skyline:min(64.3vh, 9.53vw + 50vh);
+  position:relative;z-index:10;height:100%;
+}
+.stack{
+  position:absolute;left:0;right:0;
+  bottom:calc(100vh - var(--skyline) + 34px);
+  display:flex;flex-direction:column;align-items:center;
+  padding:0 1.4rem;text-align:center;
+}
+
+.pin{
+  height:clamp(96px,19.3vh,196px);width:auto;
+  filter:drop-shadow(0 3px 16px rgba(255,252,246,.8));
+  opacity:0;animation:rise .9s cubic-bezier(.2,.8,.3,1) .1s forwards;
+}
+
+.wordmark{
+  font-family:"Playfair Display",Georgia,serif;font-weight:500;
+  font-size:clamp(3.4rem,9.4vw,7rem);line-height:.98;letter-spacing:-.015em;
+  margin:-.21em 0 0;color:#12172B;
+  text-shadow:0 2px 26px rgba(255,252,246,.7);
+  opacity:0;animation:rise .9s cubic-bezier(.2,.8,.3,1) .25s forwards;
+}
+
+.tagline{
+  margin:clamp(.9rem,3.3vh,2rem) 0 0;
+  font-size:clamp(.68rem,1.15vw,.88rem);font-weight:500;
+  letter-spacing:.34em;text-transform:uppercase;color:#1B2236;
+  text-shadow:0 1px 14px rgba(255,252,246,.92);
+  opacity:0;animation:rise .9s cubic-bezier(.2,.8,.3,1) .42s forwards;
+}
+
+.doors{
+  display:flex;flex-wrap:wrap;gap:clamp(.75rem,1.53vw,1.4rem);justify-content:center;
+  margin-top:clamp(1.5rem,5.2vh,3.4rem);
+  opacity:0;animation:rise .9s cubic-bezier(.2,.8,.3,1) .6s forwards;
+}
+.door{
+  display:inline-flex;align-items:center;justify-content:center;gap:1.1rem;
+  min-width:clamp(11.5rem,16.1vw,15rem);
+  height:clamp(44px,3.6vw,56px);
+  padding:0 2rem;border-radius:999px;
+  font-family:"Playfair Display",Georgia,serif;font-weight:500;
+  font-size:clamp(1.05rem,1.5vw,1.28rem);letter-spacing:.005em;
+  text-decoration:none;color:#12172B;
+  backdrop-filter:blur(22px) saturate(190%);
+  -webkit-backdrop-filter:blur(22px) saturate(190%);
+  transition:transform .24s cubic-bezier(.2,.8,.3,1), background .24s ease, box-shadow .24s ease;
+}
+.door .arr{font-family:Inter,sans-serif;font-size:1.05em;line-height:1}
+.door:hover{transform:translateY(-3px)}
+
+.door.research{
+  background:rgba(246,116,81,.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 0 0 0 1px rgba(255,255,255,.65),
+    0 12px 34px rgba(140,64,34,.26);
+}
+.door.research:hover{
+  background:rgba(246,116,81,.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 0 0 1px rgba(255,255,255,.8),
+    0 18px 42px rgba(140,64,34,.32);
+}
+.door.writing{
+  background:rgba(252,172,91,.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 0 0 0 1px rgba(255,255,255,.65),
+    0 12px 34px rgba(146,88,26,.24);
+}
+.door.writing:hover{
+  background:rgba(252,172,91,.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 0 0 1px rgba(255,255,255,.8),
+    0 18px 42px rgba(146,88,26,.3);
+}
+
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+@media (max-width:860px){
+  .stack{position:static;height:100%;justify-content:center;padding:0 1.4rem}
+}
+@media (max-width:640px){
+  .tagline{letter-spacing:.24em;font-size:.64rem}
+  .doors{flex-direction:column;align-items:stretch;width:100%;max-width:17.5rem}
+  .door{min-width:0;justify-content:space-between;padding:0 1.5rem;height:3.2rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .pin,.wordmark,.tagline,.doors{animation:none;opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div class="stage" aria-hidden="true">
+  <div class="ken">
+    <img class="plate" src="/assets/home-hero.jpg" alt="">
+  </div>
+</div>
+
+<main class="content">
+  <div class="stack">
+    <img class="pin" src="/assets/agora-pin.png" alt="">
+    <h1 class="wordmark">Agora</h1>
+    <p class="tagline">Social connection for young adults</p>
+    <nav class="doors" aria-label="Agora sections">
+      <a class="door research" href="/research/">Research <span class="arr">&rarr;</span></a>
+      <a class="door writing" href="/writing/">Writing <span class="arr">&rarr;</span></a>
+    </nav>
+  </div>
+</main>
+
+</body>
+</html>
