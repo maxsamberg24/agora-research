@@ -13,16 +13,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 <style>
-html,body{height:100%}
+html,body{min-height:100%}
 body{
-  overflow:hidden;
+  overflow-y:auto;
   background:linear-gradient(165deg,#FCC99C 0%,#FAB287 58%,#F79A72 100%);
 }
 .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
 .mid{
   flex:1;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;
-  padding:1rem var(--gut) 5rem;
+  padding:2.5rem var(--gut) 4rem;
 }
 .num{
   font-family:var(--heavy);font-size:clamp(4rem,13vw,9rem);line-height:.82;
@@ -54,6 +54,28 @@ p.when{
 }
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes upr{from{opacity:0;transform:translateY(14px) rotate(-1.6deg)}to{opacity:1;transform:rotate(-1.6deg)}}
+
+.sources{
+  width:min(52rem,100%);margin:2.6rem auto 0;text-align:left;
+  border-top:1.5px solid rgba(22,22,22,.28);padding-top:1.3rem;
+  opacity:0;animation:up .8s ease .95s forwards;
+}
+.sources h2{
+  font-family:var(--body);font-size:.66rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;margin:0 0 .9rem;opacity:.75;
+}
+.sources ul{list-style:none;margin:0;padding:0}
+.sources li{
+  font-size:.86rem;line-height:1.5;padding:.42rem 0;
+  border-top:1px solid rgba(22,22,22,.12);
+}
+.sources li:first-child{border-top:0}
+.sources li b{font-weight:700}
+.sources li span{opacity:.72}
+.sources a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--coral)}
+.sources a:hover{background:rgba(255,255,255,.55)}
+.sources p.note{font-size:.82rem;line-height:1.5;margin:.9rem 0 0;opacity:.75}
+@media (max-width:700px){ .sources li{font-size:.82rem} }
 </style>
 </head>
 <body>
@@ -83,6 +105,18 @@ p.when{
     <h1>Infrastructure, not events</h1>
     <p class="sub">Being written up properly before it goes out. Ask me about it in the meantime.</p>
     <p class="when">Coming soon.</p>
+
+  <section class="sources" aria-label="Sources">
+    <h2>What this report will draw on</h2>
+    <ul>
+      <li><b>The five properties of the bar</b> <span>— density, permission, familiarity, legibility, zero coordination.</span></li>
+      <li><b>Primary research</b> <span>— the 20 interviews, in full.</span></li>
+      <li><b>Third-place literature</b> <span>— Oldenburg's framing and the more recent work on their decline.</span></li>
+      <li><b>Open questions</b> <span>— density above all: how many people, of what kind, at what hour, before a room feels alive.</span></li>
+    </ul>
+    <p class="note">This one is a thesis rather than a finding, so it will be argued and sourced as such.</p>
+  </section>
+
     <p class="back"><a class="glassbtn" href="/research/reports/"><span class="arr">&larr;</span> All reports</a></p>
   </div>
 
