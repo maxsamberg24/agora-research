@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The anxious generation grew up — Agora Research</title>
+<meta name="description" content="Every national statistic in the Agora summary and presentation — what it measures, and where it comes from.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Agora">
 <meta property="og:title" content="The anxious generation grew up — Agora Research">
-<meta property="og:description" content="">
+<meta property="og:description" content="Every national statistic in the Agora summary and presentation — what it measures, and where it comes from.">
 <meta property="og:url" content="https://agoraresearch.co/research/reports/background/">
 <meta property="og:image" content="https://agoraresearch.co/assets/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -15,89 +16,73 @@
 <meta property="og:image:alt" content="Agora">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The anxious generation grew up — Agora Research">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Every national statistic in the Agora summary and presentation — what it measures, and where it comes from.">
 <meta name="twitter:image" content="https://agoraresearch.co/assets/og-image.png">
-
-<meta name="robots" content="noindex">
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 <style>
-html,body{min-height:100%}
-body{
-  overflow-y:auto;
-  background:linear-gradient(165deg,#FCC99C 0%,#FBBC8E 58%,#F8A882 100%);
+body{background:var(--ghost)}
+.cover{
+  background:linear-gradient(105deg,#FCC99C 0%,#FBBE92 45%,#F8A882 100%);
+  border-bottom:1.5px solid var(--ink);
+  padding:2.2rem 0 2.3rem;margin-top:-.4rem;
 }
-.content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
-.mid{
-  flex:1;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;
-  padding:2.5rem var(--gut) 4rem;
-}
-.num{
-  font-family:var(--heavy);font-size:clamp(4rem,13vw,9rem);line-height:.82;
-  letter-spacing:-.05em;color:rgba(22,22,22,.14);margin:0 0 .35em;
-  opacity:0;animation:up .8s cubic-bezier(.2,.8,.3,1) .1s forwards;
-}
-.kind{
-  font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--ink);opacity:0;margin:0 0 .9rem;
-  animation:up .8s ease .25s forwards;
-}
-h1{
-  font-family:var(--serif);font-weight:400;
-  font-size:clamp(2.2rem,6vw,3.9rem);line-height:1.04;letter-spacing:-.02em;
-  margin:0 0 1.1rem;max-width:18ch;
-  opacity:0;animation:up .8s cubic-bezier(.2,.8,.3,1) .35s forwards;
-}
-p.sub{
-  margin:0;max-width:40ch;font-size:1.02rem;line-height:1.5;color:var(--ink);
-  opacity:0;animation:up .8s ease .5s forwards;
-}
-p.when{
-  font-family:var(--hand);font-size:1.7rem;color:var(--ink);
-  margin:1.5rem 0 0;transform:rotate(-1.6deg);
-  opacity:0;animation:upr .8s ease .68s forwards;
-}
-.back{
-  margin-top:2rem;opacity:0;animation:up .8s ease .82s forwards;
-}
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes upr{from{opacity:0;transform:translateY(14px) rotate(-1.6deg)}to{opacity:1;transform:rotate(-1.6deg)}}
+.cover .num{font-family:var(--heavy);font-size:clamp(3rem,8vw,5rem);line-height:.85;
+  letter-spacing:-.05em;color:rgba(22,22,22,.16);margin:0 0 .5rem}
+.cover .kind{font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin:0 0 .6rem;opacity:.75}
+.cover h1{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,3.2rem);
+  line-height:1.04;letter-spacing:-.02em;margin:0 0 .9rem}
+.cover .intro{margin:0;max-width:40rem;font-size:1rem;line-height:1.55}
 
-.sources{
-  width:min(52rem,100%);margin:2.6rem auto 0;text-align:left;
-  border-top:1.5px solid rgba(22,22,22,.28);padding-top:1.3rem;
-  opacity:0;animation:up .8s ease .95s forwards;
+.wrap.narrow{max-width:52rem}
+section.group{padding:2.4rem 0 0}
+section.group h2{
+  font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--coral);margin:0 0 .2rem;
 }
-.sources h2{
-  font-family:var(--body);font-size:.66rem;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;margin:0 0 .9rem;opacity:.75;
+.entry{
+  display:grid;grid-template-columns:11.5rem 1fr;gap:.4rem 1.6rem;
+  padding:1.25rem 0;border-top:1px solid var(--hair);
 }
-.sources ul{list-style:none;margin:0;padding:0}
-.sources li{
-  font-size:.86rem;line-height:1.5;padding:.42rem 0;
-  border-top:1px solid rgba(22,22,22,.12);
+section.group h2 + .entry{border-top:1.5px solid var(--ink)}
+.entry .fig{
+  font-family:var(--heavy);font-size:1.55rem;line-height:1.1;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;
 }
-.sources li:first-child{border-top:0}
-.sources li b{font-weight:700}
-.sources li span{opacity:.72}
-.sources a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--coral)}
-.sources a:hover{background:rgba(255,255,255,.55)}
-.sources p.note{font-size:.82rem;line-height:1.5;margin:.9rem 0 0;opacity:.75}
-@media (max-width:700px){ .sources li{font-size:.82rem} }
+.entry .fig.name{font-size:1.2rem;letter-spacing:-.01em;text-transform:uppercase}
+.entry .claim{font-weight:600;font-size:1rem;line-height:1.45;margin:0 0 .35rem}
+.entry .detail{font-size:.9rem;line-height:1.55;color:var(--ink-2);margin:0 0 .6rem;max-width:none}
+.entry .meta{font-size:.8rem;line-height:1.55;margin:0;max-width:none}
+.entry .meta b{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  opacity:.6;margin-right:.45em}
+.entry .meta + .meta{margin-top:.15rem}
+.entry a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--coral)}
+.entry a:hover{background:var(--peach)}
+.entry blockquote.q{margin:0 0 .6rem;padding:.1rem 0 .1rem .9rem;border-left:2px solid var(--coral);
+  font-family:var(--serif);font-size:1.08rem;line-height:1.4;max-width:none}
+.entry blockquote.q cite{display:block;font-family:var(--body);font-style:normal;font-size:.72rem;
+  font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-top:.25rem}
+.entry q{font-style:italic;quotes:"\201C" "\201D"}
+
+.foot{padding:2.6rem 0 4rem;display:flex;flex-wrap:wrap;gap:.6rem}
+.foot .glassbtn{font-size:.85rem;padding:.66rem 1.15rem}
+
+@media (max-width:700px){
+  .entry{grid-template-columns:1fr;gap:.35rem}
+  .entry .fig{font-size:1.4rem}
+}
 </style>
 </head>
 <body>
 
-<div class="content">
-
   <nav class="nav" aria-label="Main">
     <span class="brand"><img src="/assets/agora-mark.png" alt="Agora"></span>
+    <a class="contact" href="mailto:maxsamberg24@gmail.com">Get in touch</a>
     <div class="pill">
       <a href="/" aria-label="Home">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>
@@ -113,32 +98,152 @@ p.when{
     </div>
   </nav>
 
-  <div class="mid">
+<header class="cover">
+  <div class="wrap narrow">
     <p class="num">01</p>
     <p class="kind">Background &amp; macro</p>
     <h1>The anxious generation grew up</h1>
-    <p class="sub">What the national data says about how young adults&#39; social lives changed over the last twenty years &mdash; and where the evidence is still contested.</p>
-    <p class="when">Coming soon.</p>
-
-  <section class="sources" aria-label="Sources">
-    <h2>Sources for the figures in this section</h2>
-    <ul>
-      <li><b>Drinking</b> <span>— Gallup, <a href="https://news.gallup.com/poll/713534/americans-drinking-remains-record-low.aspx">Americans' Drinking Remains at Record Low</a> (2026) and <a href="https://news.gallup.com/poll/509690/young-adults-drinking-less-prior-decades.aspx">Young Adults in U.S. Drinking Less Than in Prior Decades</a>.</span></li>
-      <li><b>Time with friends</b> <span>— Institute for Family Studies analysis of the American Time Use Survey, <a href="https://ifstudies.org/insights?id=3619">weekly hours with friends, ages 18–29</a>.</span></li>
-      <li><b>Daily in-person socializing</b> <span>— U.S. Bureau of Labor Statistics, <a href="https://www.bls.gov/tus/tables.htm">American Time Use Survey</a>, ages 15–24, 2005–2025.</span></li>
-      <li><b>Close friends</b> <span>— Survey Center on American Life, <a href="https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/">The State of American Friendship</a> (1990 vs. 2021).</span></li>
-      <li><b>Mortality risk</b> <span>— Holt-Lunstad et al., <a href="https://journals.plos.org/plosmedicine/article?id=10.1371%2Fjournal.pmed.1000316">Social Relationships and Mortality Risk: A Meta-analytic Review</a>, PLOS Medicine (148 studies, 308,000 people).</span></li>
-      <li><b>Loneliness</b> <span>— Harvard Making Caring Common, <a href="https://mcc.gse.harvard.edu/reports/loneliness-in-america">Loneliness in America</a> (2021); Cigna Group, <a href="https://newsroom.thecignagroup.com/vitality-research-new-insight-into-five-years-of-loneliness">Vitality in America</a> (2023).</span></li>
-      <li><b>Anxiety, depression, meaning and purpose</b> <span>— Harvard Making Caring Common, <em>On Edge: Understanding and Preventing Young Adults' Mental Health Challenges</em> (2023), ages 18&ndash;25.</span></li>
-      <li><b>Third places</b> <span>— U.S. Bureau of Labor Statistics, Quarterly Census of Employment and Wages (establishment counts since 2001).</span></li>
-      <li><b>Gyms and run clubs</b> <span>— Health &amp; Fitness Association, 2025 U.S. Health &amp; Fitness Consumer Report; Strava, <a href="https://press.strava.com/articles/strava-releases-12th-annual-year-in-sport-trend-report-2025">2025 Year in Sport</a>.</span></li>
-    </ul>
-    <p class="note">Full citations, figures and the contested points will be in the report itself.</p>
-  </section>
-
-    <p class="back"><a class="glassbtn" href="/research/reports/"><span class="arr">&larr;</span> All reports</a></p>
+    <p class="intro">Every national statistic in the summary and presentation, what it measures, and where it comes from. Figures are listed in the order they appear in the presentation.</p>
   </div>
+</header>
 
+<main class="wrap narrow">
+<section class="group">
+  <h2>Loneliness and mental health</h2>
+  <div class="entry">
+    <div class="fig">73–79%</div>
+    <div>
+      <p class="claim">of Gen Z report loneliness, the highest of any generation.</p>
+      <p class="detail">From Cigna’s national survey of more than 10,000 U.S. adults, fielded July–August 2019. Gen Z was defined as ages 18–22. 79% scored as lonely on the UCLA Loneliness Scale; 73% said they sometimes or always feel alone. Cigna’s 2025 follow-up put Gen Z loneliness at 67%, still the highest of any generation.</p>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 3</p>
+      <p class="meta"><b>Source</b><a href="https://www.cnbc.com/2020/01/23/loneliness-is-rising-younger-workers-and-social-media-users-feel-it-most.html">Cigna, <em>Loneliness and the Workplace: 2020 U.S. Report</em></a> (via CNBC); <a href="https://comms.cignaglobal.com/loneliness-across-generations">Cigna, <em>Loneliness in America</em> (2025)</a></p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">61%</div>
+    <div>
+      <p class="claim">of 18–25-year-olds report serious loneliness.</p>
+      <p class="detail">Harvard’s Making Caring Common project surveyed U.S. adults in October 2020. “Serious loneliness” means feeling lonely frequently or almost all the time in the prior four weeks. Fieldwork was during the pandemic.</p>
+      <p class="meta"><b>Appears in</b>Presentation, slide 3</p>
+      <p class="meta"><b>Source</b><a href="https://mcc.gse.harvard.edu/reports/loneliness-in-america">Harvard Making Caring Common, <em>Loneliness in America</em> (2021)</a></p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">29–36%</div>
+    <div>
+      <p class="claim">of 18–25-year-olds report depression (29%) and anxiety (36%).</p>
+      <p class="detail">About twice the rate reported by teenagers in the same survey (15% and 18%). National survey fielded December 2022.</p>
+      <p class="meta"><b>Appears in</b>Presentation, slide 3</p>
+      <p class="meta"><b>Source</b><a href="https://mcc.gse.harvard.edu/reports/on-edge">Harvard Making Caring Common, <em>On Edge</em> (2023)</a></p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">58%</div>
+    <div>
+      <p class="claim">of 18–25-year-olds say they lack meaning or purpose in their lives.</p>
+      <p class="detail">Share reporting little or no meaning or purpose in the prior month. Same survey as above.</p>
+      <p class="meta"><b>Appears in</b>Presentation, slide 3</p>
+      <p class="meta"><b>Source</b><a href="https://mcc.gse.harvard.edu/reports/on-edge">Harvard Making Caring Common, <em>On Edge</em> (2023)</a></p>
+    </div>
+  </div>
+</section>
+<section class="group">
+  <h2>Time with other people</h2>
+  <div class="entry">
+    <div class="fig">12.8 → 5.0</div>
+    <div>
+      <p class="claim">hours a week spent with friends, ages 18–29, 2010 to 2025.</p>
+      <p class="detail">Most of the decline came before COVID: the figure had already fallen to 6.5 hours by 2019. It dropped to 4.2 hours in 2020 and has recovered only to about 5.</p>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 4</p>
+      <p class="meta"><b>Source</b><a href="https://ifstudies.org/insights?id=3619">Institute for Family Studies, <em>Young adults are spending less time with friends</em> (October 2025)</a></p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">60 → 35 min</div>
+    <div>
+      <p class="claim">a day spent socializing in person, ages 15–24, 2005 to 2025.</p>
+      <p class="detail">The steepest decline of any age group over the period. From the Bureau of Labor Statistics’ American Time Use Survey.</p>
+      <p class="meta"><b>Appears in</b>Presentation, slide 4</p>
+      <p class="meta"><b>Source</b><a href="https://www.axios.com/2026/07/05/americans-socializing-decline">Axios, <em>Americans of all ages are spending less time socializing</em> (July 2026)</a>; <a href="https://www.bls.gov/tus/">BLS American Time Use Survey</a></p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">33% → 13%</div>
+    <div>
+      <p class="claim">of Americans say they have ten or more close friends, 1990 to 2021.</p>
+      <p class="detail">Over the same period, the share with no close friends rose from 3% to 12%.</p>
+      <p class="meta"><b>Appears in</b>Presentation, slide 4</p>
+      <p class="meta"><b>Source</b><a href="https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/">Survey Center on American Life, <em>The State of American Friendship</em> (2021)</a></p>
+    </div>
+  </div>
+</section>
+<section class="group">
+  <h2>Health</h2>
+  <div class="entry">
+    <div class="fig">50%</div>
+    <div>
+      <p class="claim">higher likelihood of survival for people with stronger social relationships.</p>
+      <p class="detail">A meta-analysis of 148 studies covering 308,849 people, followed for an average of 7.5 years. The study reports this as a 50% greater likelihood of survival for people with stronger relationships. The summary and slide 5 state the same finding from the other side: people with weak relationships are more likely to die early.</p>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 5</p>
+      <p class="meta"><b>Source</b><a href="https://journals.plos.org/plosmedicine/article?id=10.1371%2Fjournal.pmed.1000316">Holt-Lunstad, Smith &amp; Layton, <em>Social Relationships and Mortality Risk</em>, PLOS Medicine (2010)</a></p>
+    </div>
+  </div>
+</section>
+<section class="group">
+  <h2>Drinking and venues</h2>
+  <div class="entry">
+    <div class="fig">54%</div>
+    <div>
+      <p class="claim">of U.S. adults say they drink alcohol, the lowest in Gallup’s trend.</p>
+      <p class="detail">Gallup began asking in 1939. 2026 was the second straight year at this record low. Fieldwork July 1–19, 2026.</p>
+      <p class="meta"><b>Appears in</b>Presentation, slide 6</p>
+      <p class="meta"><b>Source</b><a href="https://news.gallup.com/poll/713534/americans-drinking-remains-record-low.aspx">Gallup, <em>Americans’ Drinking Remains at Record Low</em> (August 2026)</a></p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">72% → 50%</div>
+    <div>
+      <p class="claim">of 18–34-year-olds drink alcohol, 2001 to 2026.</p>
+      <p class="detail">72% is Gallup’s 2001–2003 average. The figure was 58% in 2023 and 50% in 2026. Young adults went from the age group most likely to drink to the least likely.</p>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 6</p>
+      <p class="meta"><b>Source</b><a href="https://news.gallup.com/poll/509690/young-adults-drinking-less-prior-decades.aspx">Gallup (2023)</a>; <a href="https://news.gallup.com/poll/713534/americans-drinking-remains-record-low.aspx">Gallup (2026)</a></p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">−20% / −33%</div>
+    <div>
+      <p class="claim">decline since 2001 in the number of movie theaters (about one-fifth) and bowling alleys (nearly one-third).</p>
+      <p class="detail">Establishment counts from the Bureau of Labor Statistics’ Quarterly Census of Employment and Wages.</p>
+      <p class="meta"><b>Appears in</b>Presentation, slide 6</p>
+      <p class="meta"><b>Source</b><a href="https://fortune.com/2026/08/02/bars-bowling-alleys-movie-theaters-affordabilitiy-third-space-health/">Fortune (August 2026), citing BLS QCEW</a></p>
+    </div>
+  </div>
+</section>
+<section class="group">
+  <h2>Where young adults are going instead</h2>
+  <div class="entry">
+    <div class="fig">22.9% → 30.8%</div>
+    <div>
+      <p class="claim">share of U.S. gym members who are under 25, 2015 to 2024.</p>
+      <p class="meta"><b>Appears in</b>Presentation, slide 31</p>
+      <p class="meta"><b>Source</b><a href="https://athletechnews.com/us-gyms-younger-more-male-hfa-report/">Health &amp; Fitness Association, <em>2025 U.S. Health &amp; Fitness Consumer Report</em></a> (via Athletech News)</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">3.5x</div>
+    <div>
+      <p class="claim">growth in running clubs on Strava in 2025, year over year.</p>
+      <p class="meta"><b>Appears in</b>Presentation, slide 31</p>
+      <p class="meta"><b>Source</b><a href="https://press.strava.com/articles/strava-releases-12th-annual-year-in-sport-trend-report-2025">Strava, <em>2025 Year in Sport</em></a></p>
+    </div>
+  </div>
+</section>
+
+<div class="foot">
+  <a class="glassbtn" href="/research/reports/"><span class="arr">&larr;</span> All reports</a>
+  <a class="glassbtn" href="/research/summary/">Summary</a>
+  <a class="glassbtn" href="/research/presentation/">Presentation</a>
 </div>
+</main>
 </body>
 </html>

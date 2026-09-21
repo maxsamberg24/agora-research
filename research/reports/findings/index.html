@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Zero of twenty — Agora Research</title>
+<meta name="description" content="How the research was run, who took part, and the counts and quotes behind each insight.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Agora">
 <meta property="og:title" content="Zero of twenty — Agora Research">
-<meta property="og:description" content="">
+<meta property="og:description" content="How the research was run, who took part, and the counts and quotes behind each insight.">
 <meta property="og:url" content="https://agoraresearch.co/research/reports/findings/">
 <meta property="og:image" content="https://agoraresearch.co/assets/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -15,68 +16,73 @@
 <meta property="og:image:alt" content="Agora">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Zero of twenty — Agora Research">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="How the research was run, who took part, and the counts and quotes behind each insight.">
 <meta name="twitter:image" content="https://agoraresearch.co/assets/og-image.png">
-
-<meta name="robots" content="noindex">
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 <style>
-html,body{height:100%}
-body{
-  overflow:hidden;
-  background:linear-gradient(165deg,#ADF1FF 0%,#9FE8F8 58%,#8FE3F5 100%);
+body{background:var(--ghost)}
+.cover{
+  background:linear-gradient(105deg,#FCC99C 0%,#FBBE92 45%,#F8A882 100%);
+  border-bottom:1.5px solid var(--ink);
+  padding:2.2rem 0 2.3rem;margin-top:-.4rem;
 }
-.content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
-.mid{
-  flex:1;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;
-  padding:1rem var(--gut) 5rem;
-}
-.num{
-  font-family:var(--heavy);font-size:clamp(4rem,13vw,9rem);line-height:.82;
-  letter-spacing:-.05em;color:rgba(22,22,22,.14);margin:0 0 .35em;
-  opacity:0;animation:up .8s cubic-bezier(.2,.8,.3,1) .1s forwards;
-}
-.kind{
-  font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--ink);opacity:0;margin:0 0 .9rem;
-  animation:up .8s ease .25s forwards;
-}
-h1{
-  font-family:var(--serif);font-weight:400;
-  font-size:clamp(2.2rem,6vw,3.9rem);line-height:1.04;letter-spacing:-.02em;
-  margin:0 0 1.1rem;max-width:18ch;
-  opacity:0;animation:up .8s cubic-bezier(.2,.8,.3,1) .35s forwards;
-}
-p.sub{
-  margin:0;max-width:40ch;font-size:1.02rem;line-height:1.5;color:var(--ink);
-  opacity:0;animation:up .8s ease .5s forwards;
-}
-p.when{
-  font-family:var(--hand);font-size:1.7rem;color:var(--ink);
-  margin:1.5rem 0 0;transform:rotate(-1.6deg);
-  opacity:0;animation:upr .8s ease .68s forwards;
-}
-.back{
-  margin-top:2rem;opacity:0;animation:up .8s ease .82s forwards;
-}
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes upr{from{opacity:0;transform:translateY(14px) rotate(-1.6deg)}to{opacity:1;transform:rotate(-1.6deg)}}
+.cover .num{font-family:var(--heavy);font-size:clamp(3rem,8vw,5rem);line-height:.85;
+  letter-spacing:-.05em;color:rgba(22,22,22,.16);margin:0 0 .5rem}
+.cover .kind{font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin:0 0 .6rem;opacity:.75}
+.cover h1{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,3.2rem);
+  line-height:1.04;letter-spacing:-.02em;margin:0 0 .9rem}
+.cover .intro{margin:0;max-width:40rem;font-size:1rem;line-height:1.55}
 
+.wrap.narrow{max-width:52rem}
+section.group{padding:2.4rem 0 0}
+section.group h2{
+  font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--coral);margin:0 0 .2rem;
+}
+.entry{
+  display:grid;grid-template-columns:11.5rem 1fr;gap:.4rem 1.6rem;
+  padding:1.25rem 0;border-top:1px solid var(--hair);
+}
+section.group h2 + .entry{border-top:1.5px solid var(--ink)}
+.entry .fig{
+  font-family:var(--heavy);font-size:1.55rem;line-height:1.1;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;
+}
+.entry .fig.name{font-size:1.2rem;letter-spacing:-.01em;text-transform:uppercase}
+.entry .claim{font-weight:600;font-size:1rem;line-height:1.45;margin:0 0 .35rem}
+.entry .detail{font-size:.9rem;line-height:1.55;color:var(--ink-2);margin:0 0 .6rem;max-width:none}
+.entry .meta{font-size:.8rem;line-height:1.55;margin:0;max-width:none}
+.entry .meta b{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  opacity:.6;margin-right:.45em}
+.entry .meta + .meta{margin-top:.15rem}
+.entry a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--coral)}
+.entry a:hover{background:var(--peach)}
+.entry blockquote.q{margin:0 0 .6rem;padding:.1rem 0 .1rem .9rem;border-left:2px solid var(--coral);
+  font-family:var(--serif);font-size:1.08rem;line-height:1.4;max-width:none}
+.entry blockquote.q cite{display:block;font-family:var(--body);font-style:normal;font-size:.72rem;
+  font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-top:.25rem}
+.entry q{font-style:italic;quotes:"\201C" "\201D"}
+
+.foot{padding:2.6rem 0 4rem;display:flex;flex-wrap:wrap;gap:.6rem}
+.foot .glassbtn{font-size:.85rem;padding:.66rem 1.15rem}
+
+@media (max-width:700px){
+  .entry{grid-template-columns:1fr;gap:.35rem}
+  .entry .fig{font-size:1.4rem}
+}
 </style>
 </head>
 <body>
 
-<div class="content">
-
   <nav class="nav" aria-label="Main">
     <span class="brand"><img src="/assets/agora-mark.png" alt="Agora"></span>
+    <a class="contact" href="mailto:maxsamberg24@gmail.com">Get in touch</a>
     <div class="pill">
       <a href="/" aria-label="Home">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>
@@ -92,17 +98,207 @@ p.when{
     </div>
   </nav>
 
-  <div class="mid">
+<header class="cover">
+  <div class="wrap narrow">
     <p class="num">02</p>
     <p class="kind">Primary research</p>
     <h1>Zero of twenty</h1>
-    <p class="sub">Twenty interviews on how friendships actually form, with the method, the sample bias, and the raw quotes.</p>
-    <p class="when">Coming soon.</p>
-
-
-    <p class="back"><a class="glassbtn" href="/research/reports/"><span class="arr">&larr;</span> All reports</a></p>
+    <p class="intro">Who took part, what they were asked, and the counts and quotes behind each insight in the summary and presentation.</p>
   </div>
+</header>
 
+<main class="wrap narrow">
+<section class="group">
+  <h2>Method</h2>
+  <div class="entry">
+    <div class="fig">20</div>
+    <div>
+      <p class="claim">young adults, ages 23–28: 14 men and 6 women across 7 metro areas.</p>
+      <p class="detail">New York (8), Los Angeles area (4), San Francisco (3), Syracuse (2), San Diego, Chicago and Atlanta (1 each). Responses were collected in writing through a Google Form between July 8 and August 13, 2026. Participants were recruited through Max’s personal network, so the sample is not random. Two further responses are excluded: Max’s own, and one that arrived after the analysis.</p>
+      <p class="meta"><b>Appears in</b>Summary (method) · Presentation, slides 13–14</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">7</div>
+    <div>
+      <p class="claim">open-ended questions, the same for every participant.</p>
+      <p class="detail"><b>Q1.</b> Think of a friend you made as an adult that you’re still close with. Where did you meet, and what turned it into a real friendship?<br><b>Q2.</b> Zero responsibilities, free Saturday: walk me through your ideal day.<br><b>Q3.</b> Think about the last time you were deciding between going out or staying in. What ended up tipping the decision? And what would’ve changed your mind?<br><b>Q4.</b> What’s the most annoying or difficult part of meeting new people, making plans, or finding social things to do these days?<br><b>Q5.</b> It’s Friday night, you want to be out with people — but bars don’t exist. What do you do, or what do you wish existed?<br><b>Q6.</b> How do you currently use technology to find plans, events, activities, or people to do things with in real life?<br><b>Q7.</b> If you could design a better social world for people our age, what would exist that doesn’t really exist today?<br><br>Counts below come from reading every response. One response can count toward more than one theme. Quotes are verbatim.</p>
+      <p class="meta"><b>Appears in</b>Summary (method)</p>
+    </div>
+  </div>
+</section>
+<section class="group">
+  <h2>How adult friendships formed</h2>
+  <div class="entry">
+    <div class="fig">0 / 20</div>
+    <div>
+      <p class="claim">met the friend they described at a bar.</p>
+      <p class="detail">Where they did meet: a sports league, gym or pickup game (7), work (5), through mutual friends (4), school (3), a networking event (1).</p>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 16</p>
+      <p class="meta"><b>Question</b>Q1</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">15 / 20</div>
+    <div>
+      <p class="claim">met in a setting built on repeated contact: a league, gym, workplace or school.</p>
+      <blockquote class="q">“Countless hours on the court that led to an off the court friendship”<cite>— 28, Syracuse</cite></blockquote>
+      <blockquote class="q">“Work, we spend a lot of time together every work week so we were constantly chatting”<cite>— 26, New York</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slides 16–17</p>
+      <p class="meta"><b>Question</b>Q1</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">8 / 20</div>
+    <div>
+      <p class="claim">credited time or repeated contact with turning an acquaintance into a friend.</p>
+      <blockquote class="q">“I don’t necessarily think meeting new people is so hard, but actually making them friends is hard. There is no forced togetherness that happens like with siblings or college”<cite>— 27, Syracuse</cite></blockquote>
+      <blockquote class="q">“Even people I played Mens league hoops with I don’t stay in touch with because it’s just once a week and then see ya.”<cite>— 27, Syracuse</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 18</p>
+      <p class="meta"><b>Question</b>Q1 · Q4</p>
+    </div>
+  </div>
+</section>
+<section class="group">
+  <h2>New people and existing groups</h2>
+  <div class="entry">
+    <div class="fig">8 / 20</div>
+    <div>
+      <p class="claim">said they meet, or would rather meet, new people through friends instead of as strangers.</p>
+      <blockquote class="q">“These days, I feel like I only meet new people through mutual friends, and even that can be hard.”<cite>— 24, Los Angeles</cite></blockquote>
+      <blockquote class="q">“Sign up for golf matches, bowling matches, game nights, etc. but with friends not strangers.”<cite>— 28, Syracuse</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 22</p>
+      <p class="meta"><b>Question</b>Q4 · Q6 · Q7</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">6 / 20</div>
+    <div>
+      <p class="claim">said their social time goes to the same existing group, or that separate groups don’t mix.</p>
+      <blockquote class="q">“when going out I’m typically with a group of friends and other people are with friends and it’s rare that separate friend groups commingle.”<cite>— 25, New York</cite></blockquote>
+      <blockquote class="q">“Most people already have friend groups that have been established for years and years.”<cite>— 26, San Francisco</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 19</p>
+      <p class="meta"><b>Question</b>Q3 · Q4</p>
+    </div>
+  </div>
+</section>
+<section class="group">
+  <h2>The ideal day</h2>
+  <div class="entry">
+    <div class="fig">18 / 20</div>
+    <div>
+      <p class="claim">included exercise or a sport, and 18 of 20 included a meal with other people.</p>
+      <p class="detail">Activities named include golf, basketball, spikeball, surfing, running, pickleball, climbing, hiking, beach days, grilling and potlucks. Four ended the day with cards or board games. Seven explicitly mentioned drinking, always alongside something else, such as a meal or a game on TV.</p>
+      <blockquote class="q">“run outside (5-8mi), come home, eat, go to the beach, play spikeball or some sort of game with my friends, grill out, have a fire, compete some more, board games, watch college football and go to sleep. Best day ever”<cite>— 28, Manhattan Beach</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 20</p>
+      <p class="meta"><b>Question</b>Q2</p>
+    </div>
+  </div>
+</section>
+<section class="group">
+  <h2>Going out vs. staying in</h2>
+  <div class="entry">
+    <div class="fig">5 / 20</div>
+    <div>
+      <p class="claim">said fatigue or low energy tipped the decision.</p>
+      <p class="detail">Other deciding factors: the next day, meaning a hangover, sleep or responsibilities (4); who else was going (4); cost (3); travel or distance (3); whether the plan was something new (3).</p>
+      <blockquote class="q">“I was tired. If the activity had been a break from the norm I would have been more inclined to have gone out.”<cite>— 26, New York</cite></blockquote>
+      <blockquote class="q">“we felt like we would have better quality time spent at a home, without having to speak loudly over music or contending with travel time and a busy environment.”<cite>— 25, Los Angeles</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Presentation, slide 21</p>
+      <p class="meta"><b>Question</b>Q3</p>
+    </div>
+  </div>
+</section>
+<section class="group">
+  <h2>Technology</h2>
+  <div class="entry">
+    <div class="fig">7 / 20</div>
+    <div>
+      <p class="claim">named texting or group chats as their main tool for making plans.</p>
+      <p class="detail">Four said they barely use technology for this at all.</p>
+      <blockquote class="q">“I think it’s easy to find things to do not as easy to find people to do them with.”<cite>— 28, Syracuse</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 24</p>
+      <p class="meta"><b>Question</b>Q6</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">5 / 20</div>
+    <div>
+      <p class="claim">named Partiful, more than any other app.</p>
+      <p class="detail">Other tools named once or twice include Instagram, TikTok, Google, Spotify, Luma, Volo, Bandsintown, Bumble BFF and dating apps.</p>
+      <blockquote class="q">“Initially, the app was used for birthday parties and one off events, but it seems like now people are using it for more casual social events as well.”<cite>— 26, San Francisco</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 25</p>
+      <p class="meta"><b>Question</b>Q6</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">3 / 20</div>
+    <div>
+      <p class="claim">said finding things to do isn’t the problem, or that there are too many options.</p>
+      <blockquote class="q">“So it feels like there are a million things happening, then I get overwhelmed, and then I don&#x27;t know anyone going so at the same time it feels like there is nothing!!”<cite>— 24, Los Angeles</cite></blockquote>
+      <blockquote class="q">“A lot of the platforms like Facebook are too saturated with plans that I have no interest in”<cite>— 26, New York</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 23</p>
+      <p class="meta"><b>Question</b>Q6</p>
+    </div>
+  </div>
+</section>
+<section class="group">
+  <h2>The four core problems</h2>
+  <div class="entry">
+    <div class="fig">7 / 20</div>
+    <div>
+      <p class="claim">said starting conversations, small talk or awkwardness with new people is the hardest part.</p>
+      <blockquote class="q">“Starting the conversation and not having it be awkward / unnatural”<cite>— 26, New York</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 27</p>
+      <p class="meta"><b>Question</b>Q4</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">7 / 20</div>
+    <div>
+      <p class="claim">named time, scheduling or coordination.</p>
+      <blockquote class="q">“I think the most annoying part is first of all coordinating schedules since everyone’s so busy all the time.”<cite>— 23, Chicago</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 27</p>
+      <p class="meta"><b>Question</b>Q4</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">6 / 20</div>
+    <div>
+      <p class="claim">named cost.</p>
+      <blockquote class="q">“most plans these days, especially plans involving social things, cost a shit ton of money.”<cite>— 26, San Francisco</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 27</p>
+      <p class="meta"><b>Question</b>Q3 · Q4</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="fig">5 / 20</div>
+    <div>
+      <p class="claim">questioned whether events or apps would have the right people.</p>
+      <blockquote class="q">“events are either &quot;too exclusive&quot; and require paying or free events too many weirdos show up and its awkward.”<cite>— 27, New York</cite></blockquote>
+      <blockquote class="q">“Sometimes it may be tough to gauge who will be at these events and if they will actually be fun”<cite>— 25, Los Angeles</cite></blockquote>
+      <p class="meta"><b>Appears in</b>Summary · Presentation, slide 27</p>
+      <p class="meta"><b>Question</b>Q4 · Q6</p>
+    </div>
+  </div>
+</section>
+<section class="group">
+  <h2>What they wish existed</h2>
+  <div class="entry">
+    <div class="fig">4 / 20</div>
+    <div>
+      <p class="claim">asked for spaces with fewer or no phones.</p>
+      <blockquote class="q">“I feel like a place where u have to leave ur phone at the door or something tbh.”<cite>— 23, Southern California</cite></blockquote>
+      <p class="meta"><b>Question</b>Q7</p>
+    </div>
+  </div>
+</section>
+
+<div class="foot">
+  <a class="glassbtn" href="/research/reports/"><span class="arr">&larr;</span> All reports</a>
+  <a class="glassbtn" href="/research/summary/">Summary</a>
+  <a class="glassbtn" href="/research/presentation/">Presentation</a>
 </div>
+</main>
 </body>
 </html>
