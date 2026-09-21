@@ -46,14 +46,16 @@ section.group h2{
   text-transform:uppercase;color:var(--coral);margin:0 0 .2rem;
 }
 .entry{
-  display:grid;grid-template-columns:11.5rem 1fr;gap:.4rem 1.6rem;
+  display:grid;grid-template-columns:13.5rem 1fr;gap:.4rem 1.6rem;
   padding:1.25rem 0;border-top:1px solid var(--hair);
 }
 section.group h2 + .entry{border-top:1.5px solid var(--ink)}
 .entry .fig{
   font-family:var(--heavy);font-size:1.55rem;line-height:1.1;letter-spacing:-.03em;
-  font-variant-numeric:tabular-nums;
+  font-variant-numeric:tabular-nums;white-space:nowrap;
 }
+.entry.nofig{grid-template-columns:1fr}
+.entry.nofig .claim{font-size:1.06rem}
 .entry .fig.name{font-size:1.2rem;letter-spacing:-.01em;text-transform:uppercase}
 .entry .claim{font-weight:600;font-size:1rem;line-height:1.45;margin:0 0 .35rem}
 .entry .detail{font-size:.9rem;line-height:1.55;color:var(--ink-2);margin:0 0 .6rem;max-width:none}
@@ -76,7 +78,7 @@ section.group h2 + .entry{border-top:1.5px solid var(--ink)}
   .entry{grid-template-columns:1fr;gap:.35rem}
   .entry .fig{font-size:1.4rem}
 }
-</style>
+.cover{background:linear-gradient(170deg,#FF7B7B,#FF5757)}</style>
 </head>
 <body>
 
