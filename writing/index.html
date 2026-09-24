@@ -40,7 +40,7 @@ body{
 .page{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
 
 /* ---------- masthead ---------- */
-.mast{padding:.2rem var(--gut) 0;text-align:center;flex:0 0 auto}
+.mast{padding:.2rem var(--gut) clamp(.6rem,1.6vh,1.1rem);text-align:center;flex:0 0 auto}
 .mast .eyebrow{margin:0 0 .3rem;color:var(--ink);opacity:.62;letter-spacing:.24em;font-size:.62rem}
 .mast h1{
   font-family:var(--serif);font-weight:400;
@@ -49,9 +49,9 @@ body{
 .mast p.sub{margin:0 auto;max-width:44ch;font-size:.92rem;line-height:1.45;opacity:.78}
 
 /* ---------- the rolodex ---------- */
-:root{--pw:clamp(15rem,25vw,19.5rem)}
+:root{--pw:clamp(13.5rem,22.5vw,17.75rem)}
 
-.stage{flex:1;min-height:0;position:relative;display:flex;align-items:center}
+.stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;padding:clamp(.5rem,1.4vh,1rem) 0}
 .rail{
   position:relative;width:100%;height:100%;
   display:flex;align-items:center;gap:clamp(1rem,3.4vw,3rem);
@@ -160,7 +160,7 @@ a.sheet:hover{
 /* ---------- bottom bar ---------- */
 .bar{
   flex:0 0 auto;display:flex;justify-content:center;align-items:center;
-  padding:0 var(--gut) clamp(1rem,3.2vh,1.9rem);
+  padding:clamp(.4rem,1.2vh,.9rem) var(--gut) clamp(1rem,3.2vh,1.9rem);
 }
 .bar .sub-btn{
   display:inline-flex;align-items:center;gap:.7rem;
@@ -206,7 +206,6 @@ a.sheet:hover{
   </nav>
 
   <header class="mast">
-    <p class="eyebrow">Writing</p>
     <h1>My personal thoughts on the research.</h1>
     <p class="sub">What I learned and where we go from here.</p>
   </header>
@@ -238,12 +237,12 @@ a.sheet:hover{
     { title:'Where We Stand Today',
       sub:'Connectivity Without Connection',
       topic:'Culture', length:'~5 min', released:'Oct 1, 2026', art:0 },
-    { title:'Blog Post #3', topic:'TBD', length:'TBD', released:'TBD', art:1 },
-    { title:'Blog Post #4', topic:'TBD', length:'TBD', released:'TBD', art:2 },
-    { title:'Blog Post #5', topic:'TBD', length:'TBD', released:'TBD', art:3 },
-    { title:'Blog Post #6', topic:'TBD', length:'TBD', released:'TBD', art:4 },
-    { title:'Blog Post #7', topic:'TBD', length:'TBD', released:'TBD', art:5 },
-    { title:'Blog Post #8', topic:'TBD', length:'TBD', released:'TBD', art:6 }
+    { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:1 },
+    { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:2 },
+    { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:3 },
+    { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:4 },
+    { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:5 },
+    { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:6 }
   ];
 
   /* ------------------------------------------ abstract pointillist fields */
@@ -474,7 +473,7 @@ a.sheet:hover{
 
     var inner =
       '<div class="phead"><span class="chips"><i></i><i></i><i></i></span>'+ statusDot(live) +'</div>'+
-      '<h2 class="ptitle"><span class="no">No. '+ pad(n) +'</span>'+ p.title +'</h2>'+
+      '<h2 class="ptitle"><span class="no">Blog Post '+ pad(n) +'</span>'+ p.title +'</h2>'+
       (p.sub ? '<p class="psub">'+ p.sub +'</p>' : '')+
       '<div class="art">'+ artHTML +
         '<p class="aside light">an Agora<br>essay</p>'+
