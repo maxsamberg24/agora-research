@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Writing — Agora</title>
-<meta name="description" content="Notes as the work happens. First post coming soon.">
+<meta name="description" content="Essays on the research — what I learned and where we go from here. Published on Substack.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Agora">
 <meta property="og:title" content="Writing — Agora">
-<meta property="og:description" content="Notes as the work happens. First post coming soon.">
+<meta property="og:description" content="Essays on the research — what I learned and where we go from here. Published on Substack.">
 <meta property="og:url" content="https://agoraresearch.co/writing/">
 <meta property="og:image" content="https://agoraresearch.co/assets/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -16,59 +16,185 @@
 <meta property="og:image:alt" content="Agora">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Writing — Agora">
-<meta name="twitter:description" content="Notes as the work happens. First post coming soon.">
+<meta name="twitter:description" content="Essays on the research — what I learned and where we go from here. Published on Substack.">
 <meta name="twitter:image" content="https://agoraresearch.co/assets/og-image.png">
-
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 <style>
 html,body{height:100%}
 body{
   overflow:hidden;
-  background:linear-gradient(165deg,#ADF1FF 0%,#D9EDF3 34%,#FCC99C 76%,#F79A72 100%);
-  background-size:100% 180%;
-  animation:shift 26s ease-in-out infinite alternate;
+  background:
+    radial-gradient(70% 55% at 50% 12%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 60%),
+    linear-gradient(168deg,#ADF1FF 0%,#D9EDF3 30%,#F2F2F8 55%,#FCC99C 88%,#F79A72 100%);
+  background-size:100% 160%;
+  animation:shift 32s ease-in-out infinite alternate;
 }
 @keyframes shift{0%{background-position:0 0}100%{background-position:0 100%}}
 
-.content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
-.mid{
-  flex:1;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;
-  padding:1rem var(--gut) 4rem;
-}
-h1{
+.page{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
+
+/* ---------- masthead ---------- */
+.mast{padding:.2rem var(--gut) 0;text-align:center;flex:0 0 auto}
+.mast .eyebrow{margin:0 0 .3rem;color:var(--ink);opacity:.62;letter-spacing:.24em;font-size:.62rem}
+.mast h1{
   font-family:var(--serif);font-weight:400;
-  font-size:clamp(2.6rem,8vw,5rem);line-height:1;letter-spacing:-.022em;
-  margin:0 0 1.1rem;max-width:17ch;
-  opacity:0;animation:up .75s cubic-bezier(.2,.8,.3,1) .25s forwards;
-  text-shadow:0 2px 26px rgba(255,255,255,.5);
+  font-size:clamp(1.9rem,4.4vw,3rem);line-height:1;letter-spacing:-.02em;margin:0 0 .35rem;
 }
-p.sub{
-  margin:0;max-width:34ch;font-size:1.04rem;line-height:1.5;
-  opacity:0;animation:up .75s ease .5s forwards;
+.mast p.sub{margin:0 auto;max-width:44ch;font-size:.92rem;line-height:1.45;opacity:.78}
+
+/* ---------- the rolodex ---------- */
+:root{--pw:clamp(15rem,25vw,19.5rem)}
+
+.stage{flex:1;min-height:0;position:relative;display:flex;align-items:center}
+.rail{
+  position:relative;width:100%;height:100%;
+  display:flex;align-items:center;gap:clamp(1rem,3.4vw,3rem);
+  padding:0 calc(50vw - (var(--pw) / 2));
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  perspective:1500px;perspective-origin:50% 50%;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  cursor:grab;
 }
-p.when{
-  font-family:var(--hand);font-size:1.6rem;color:var(--coral);
-  margin:1.6rem 0 0;transform:rotate(-1.4deg);
-  opacity:0;animation:up .75s ease .75s forwards;
+.rail::-webkit-scrollbar{display:none}
+.rail.dragging{cursor:grabbing;scroll-snap-type:none}
+
+.poster{
+  flex:0 0 auto;width:var(--pw);
+  scroll-snap-align:center;
+  transform-style:preserve-3d;
+  transition:transform .05s linear, filter .35s ease;
+  will-change:transform;
 }
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-p.when{animation-name:upr}
-@keyframes upr{from{opacity:0;transform:translateY(14px) rotate(-1.4deg)}to{opacity:1;transform:rotate(-1.4deg)}}
+.sheet{
+  position:relative;aspect-ratio:2 / 3;width:100%;
+  background:#F5F0E4;
+  border-radius:3px;
+  padding:7% 7.5% 6.5%;
+  display:flex;flex-direction:column;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.7) inset,
+    0 18px 44px rgba(22,22,22,.22),
+    0 3px 10px rgba(22,22,22,.12);
+  overflow:hidden;user-select:none;
+  color:inherit;text-decoration:none;
+}
+.sheet::after{ /* paper sheen + vignette */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 60px rgba(120,86,54,.10);
+  background:linear-gradient(115deg,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 40%);
+}
+a.sheet{cursor:pointer;transition:box-shadow .25s ease}
+a.sheet:hover{
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.7) inset,
+    0 26px 58px rgba(22,22,22,.28),
+    0 4px 12px rgba(22,22,22,.16);
+}
+
+/* poster head */
+.phead{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:5%}
+.chips{display:flex;gap:3px}
+.chips i{display:block;width:14px;height:5px;border-radius:1px}
+.chips i:nth-child(1){background:#12172B}
+.chips i:nth-child(2){background:#F67451}
+.chips i:nth-child(3){background:#5FC9E3}
+.status{
+  width:11px;height:11px;border-radius:50%;display:block;margin-top:1px;
+  border:1px solid #12172B;background:#FFFFFF;
+}
+.status.live{background:#A8DCA6;box-shadow:0 0 0 2px rgba(168,220,166,.28)}
+
+.ptitle{
+  font-family:var(--body);font-weight:700;
+  font-size:clamp(.98rem,1.72vw,1.32rem);line-height:1.08;letter-spacing:-.03em;
+  margin:0 0 2%;color:#12172B;text-wrap:balance;
+}
+.ptitle .no{
+  display:block;font-family:var(--serif);font-weight:400;font-style:italic;
+  font-size:.82em;letter-spacing:-.01em;color:var(--coral);margin-bottom:.1em;
+}
+.psub{
+  margin:0 0 5%;font-size:.6rem;line-height:1.3;letter-spacing:.01em;
+  color:#12172B;opacity:.66;font-weight:500;
+}
+
+/* the art panel */
+.art{position:relative;width:100%;flex:1;min-height:0;border-radius:2px;overflow:hidden;background:#12172B}
+.art svg,.art canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.aside{
+  position:absolute;right:4%;top:6%;z-index:2;
+  writing-mode:vertical-rl;
+  font-family:var(--serif);font-size:.62rem;line-height:1.15;letter-spacing:.02em;
+  color:#12172B;opacity:.8;
+}
+.aside{color:#12172B;opacity:.85;text-shadow:0 1px 5px rgba(245,240,228,.75)}
+.aside.light{color:#F5F0E4;opacity:.92;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+
+/* credit block */
+.credits{margin-top:5%;border-top:1px solid rgba(22,22,22,.35);padding-top:4%}
+.credits .story{
+  margin:0 0 4%;font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#12172B;opacity:.7;
+}
+.credits .grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem .5rem;
+  font-size:.47rem;line-height:1.35;letter-spacing:.06em;text-transform:uppercase;
+  color:#12172B;opacity:.62;
+}
+.credits .grid b{display:block;font-weight:700;opacity:.85}
+.credits .foot{display:flex;align-items:baseline;justify-content:space-between;margin:5% 0 0}
+.credits .soon{font-family:var(--hand);font-size:1rem;color:var(--coral);transform:rotate(-2deg)}
+.credits .live{
+  font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);
+  display:inline-flex;align-items:center;gap:.35rem;
+}
+.credits .idx{font-family:var(--heavy);font-size:.8rem;letter-spacing:-.02em;color:#12172B}
+
+/* ---------- bottom bar ---------- */
+.bar{
+  flex:0 0 auto;display:flex;justify-content:center;align-items:center;
+  padding:0 var(--gut) clamp(1rem,3.2vh,1.9rem);
+}
+.bar .sub-btn{
+  display:inline-flex;align-items:center;gap:.7rem;
+  height:clamp(46px,4vw,56px);padding:0 1.6rem;border-radius:999px;
+  font-size:.9rem;font-weight:600;letter-spacing:-.005em;text-decoration:none;color:var(--ink);
+  background:rgba(255,255,255,.46);
+  backdrop-filter:blur(22px) saturate(190%);
+  -webkit-backdrop-filter:blur(22px) saturate(190%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 0 0 1px rgba(255,255,255,.6),
+    0 12px 34px rgba(22,22,22,.18);
+  transition:transform .22s cubic-bezier(.2,.8,.3,1), background .22s ease, box-shadow .22s ease;
+}
+.bar .sub-btn:hover{
+  transform:translateY(-3px);background:rgba(255,255,255,.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,1), 0 18px 44px rgba(22,22,22,.22);
+}
+.bar .sub-btn .mark{width:17px;height:17px;display:block;color:#FF6719}
+.bar .sub-btn .arr{color:var(--coral);font-weight:700}
+
+@media (prefers-reduced-motion:reduce){
+  body{animation:none}
+  .poster{transition:none}
+}
 </style>
 </head>
 <body>
 
-<div class="content">
+<div class="page">
 
   <nav class="nav" aria-label="Main">
     <span class="brand"><img src="/assets/agora-mark.png" alt="Agora"></span>
+    <a class="contact" href="mailto:maxsamberg24@gmail.com">Get in touch</a>
     <div class="pill">
       <a href="/" aria-label="Home">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>
@@ -79,12 +205,387 @@ p.when{animation-name:upr}
     </div>
   </nav>
 
-  <div class="mid">
+  <header class="mast">
+    <p class="eyebrow">Writing</p>
     <h1>My personal thoughts on the research.</h1>
     <p class="sub">What I learned and where we go from here.</p>
-    <p class="when">Coming soon.</p>
+  </header>
+
+  <div class="stage">
+    <div class="rail" id="rail" role="list" aria-label="Essays"></div>
+  </div>
+
+  <div class="bar">
+    <a class="sub-btn" href="https://agoraresearchco.substack.com/" target="_blank" rel="noopener">
+      <svg class="mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h18v3H3V3zm0 5.5h18V21l-9-5-9 5V8.5z"/></svg>
+      <span>Read on Substack</span>
+      <span class="arr">&rarr;</span>
+    </a>
   </div>
 
 </div>
+
+<script>
+(function(){
+  var SUBSTACK = 'https://agoraresearchco.substack.com/';
+
+  /* ---------------------------------------------------------------- posts */
+  var POSTS = [
+    { title:'From Campfires to Pubs',
+      sub:'How Humans Have Built Infrastructure for Connection Throughout History',
+      topic:'History', length:'~5 min', published:'Sept 24, 2026',
+      art:'campfire', url:SUBSTACK },
+    { title:'Where We Stand Today',
+      sub:'Connectivity Without Connection',
+      topic:'Culture', length:'~5 min', released:'Oct 1, 2026', art:0 },
+    { title:'Blog Post #3', topic:'TBD', length:'TBD', released:'TBD', art:1 },
+    { title:'Blog Post #4', topic:'TBD', length:'TBD', released:'TBD', art:2 },
+    { title:'Blog Post #5', topic:'TBD', length:'TBD', released:'TBD', art:3 },
+    { title:'Blog Post #6', topic:'TBD', length:'TBD', released:'TBD', art:4 },
+    { title:'Blog Post #7', topic:'TBD', length:'TBD', released:'TBD', art:5 },
+    { title:'Blog Post #8', topic:'TBD', length:'TBD', released:'TBD', art:6 }
+  ];
+
+  /* ------------------------------------------ abstract pointillist fields */
+  /* two-stop washes in the Agora palette: oranges, pink/reds, blues        */
+  var FIELDS = [
+    {a:'#2E4A86', b:'#F67451', ang:  35, accent:'#FCC99C'},   /* blue  → coral  */
+    {a:'#FF5757', b:'#FCC99C', ang: 100, accent:'#8FC6E8'},   /* red   → peach  */
+    {a:'#12172B', b:'#4E7BC4', ang: 155, accent:'#F79A72'},   /* navy  → blue   */
+    {a:'#F67451', b:'#E9748B', ang:  10, accent:'#ADF1FF'},   /* coral → pink   */
+    {a:'#ADF1FF', b:'#F79A72', ang:  55, accent:'#33508F'},   /* sky   → warm   */
+    {a:'#1B2647', b:'#FF5757', ang: 125, accent:'#FFD98F'},   /* night → red    */
+    {a:'#FCC99C', b:'#33508F', ang:  80, accent:'#FF8A4C'}    /* peach → blue   */
+  ];
+
+  function hex2rgb(h){ return [parseInt(h.substr(1,2),16), parseInt(h.substr(3,2),16), parseInt(h.substr(5,2),16)]; }
+  function jitter(v, n){ return Math.max(0, Math.min(255, Math.round(v + (Math.random()-0.5) * n))); }
+
+  function paintField(cv){
+    var f = FIELDS[(cv.getAttribute('data-field') | 0) % FIELDS.length];
+    var box = cv.getBoundingClientRect();
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    var W = Math.max(160, Math.round((box.width  || 240) * dpr));
+    var H = Math.max(160, Math.round((box.height || 320) * dpr));
+    cv.width = W; cv.height = H;
+    var g = cv.getContext('2d');
+
+    var A = hex2rgb(f.a), B = hex2rgb(f.b), AC = hex2rgb(f.accent);
+    var rad = f.ang * Math.PI / 180, ux = Math.cos(rad), uy = Math.sin(rad);
+    var seed = Math.random() * 6.28;
+
+    g.fillStyle = f.a; g.fillRect(0, 0, W, H);
+
+    var step = Math.max(2.6, W / 190);
+    for (var y = -step; y < H + step; y += step){
+      for (var x = -step; x < W + step; x += step){
+        var px = x + (Math.random()-0.5) * step * 1.05;
+        var py = y + (Math.random()-0.5) * step * 1.05;
+
+        /* position along the wash, softened by two slow waves */
+        var t = ((px / W) * ux + (py / H) * uy + 1) / 2;
+        t += 0.09 * Math.sin(px / W * 3.1 + seed) + 0.07 * Math.cos(py / H * 2.4 - seed);
+        t = Math.max(0, Math.min(1, t));
+
+        var e = t * t * (3 - 2 * t);                     /* smoothstep */
+        var r = A[0] + (B[0] - A[0]) * e;
+        var gr= A[1] + (B[1] - A[1]) * e;
+        var b = A[2] + (B[2] - A[2]) * e;
+
+        if (Math.random() < 0.075){                      /* accent flecks */
+          r = AC[0]; gr = AC[1]; b = AC[2];
+        }
+
+        g.fillStyle = 'rgb(' + jitter(r,42) + ',' + jitter(gr,42) + ',' + jitter(b,42) + ')';
+        g.globalAlpha = 0.82 + Math.random() * 0.18;
+        g.beginPath();
+        g.arc(px, py, step * 0.42 + Math.random() * step * 0.18, 0, 6.2832);
+        g.fill();
+      }
+    }
+    g.globalAlpha = 1;
+    tuneCaption(cv, g, W, H);
+  }
+
+  /* reads the corner the caption sits over, and flips it light or dark */
+  function tuneCaption(cv, g, W, H){
+    var cap = cv.parentNode.querySelector('.aside');
+    if (!cap) return;
+    var d, lum = 0, n = 0;
+    try { d = g.getImageData(Math.round(W*0.78), Math.round(H*0.04), Math.round(W*0.2), Math.round(H*0.34)).data; }
+    catch(err){ return; }
+    for (var i = 0; i < d.length; i += 16){
+      lum += 0.2126*d[i] + 0.7152*d[i+1] + 0.0722*d[i+2]; n++;
+    }
+    cap.classList.toggle('light', (lum / Math.max(1,n)) < 150);
+  }
+
+  /* ------------------------------------------------------- pointillist fire */
+  var PAL = {
+    night : ['#0B0F1C','#111A31','#18243F','#233152'],
+    mid   : ['#33508F','#4E7BC4','#6E9AD6','#8FC6E8'],
+    high  : ['#ADF1FF','#D7F3FA','#F2F2F8','#E2E8F0'],
+    warm  : ['#F79A72','#F67451','#FF5757','#E9748B'],
+    hot   : ['#FFD98F','#FFB25C','#F67451','#FF8A4C'],
+    core  : ['#FFF6E2','#FFF3D2','#FFE1A3','#F2F2F8'],
+    ember : ['#FF5757','#F67451','#FFB25C'],
+    log   : ['#2A1710','#4A2A1C','#7A4A2E'],
+    silhouette: ['#140C0E','#1E1114','#2A171A','#0F0A0C'],
+    sandDark  : ['#8A5A46','#A86B4E','#6B4636'],
+    ground: ['#F79A72','#FCC99C','#E9748B','#F67451']
+  };
+  function pick(a){ return a[(Math.random() * a.length) | 0]; }
+
+  function paintFire(cv){
+    var box = cv.getBoundingClientRect();
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    var W = Math.max(160, Math.round((box.width  || 240) * dpr));
+    var H = Math.max(160, Math.round((box.height || 320) * dpr));
+    cv.width = W; cv.height = H;
+    var g = cv.getContext('2d');
+
+    var cx = W * 0.50;            /* the fire */
+    var fy = H * 0.74;            /* where the logs sit */
+    var top = fy - H * 0.34;      /* tip of the flame */
+    var horizon = H * 0.66;       /* sand begins */
+    var seed = Math.random() * 6.28;
+
+    g.fillStyle = '#0B0F1C'; g.fillRect(0, 0, W, H);
+
+    /* a ring of seated figures, nearer ones larger — as in the reference photo */
+    var FIG = [
+      /* far side of the ring, small, behind the fire */
+      {x:0.30, y:0.685, r:0.075}, {x:0.40, y:0.665, r:0.062},
+      {x:0.60, y:0.665, r:0.062}, {x:0.70, y:0.685, r:0.075},
+      /* near side, big, cropped by the bottom edge */
+      {x:0.06, y:1.12, r:0.30}, {x:0.28, y:1.18, r:0.28},
+      {x:0.50, y:1.24, r:0.26}, {x:0.72, y:1.18, r:0.28}, {x:0.94, y:1.12, r:0.30}
+    ].map(function(f){ return {x:f.x*W, y:f.y*H, r:f.r*H}; });
+
+    function figureAt(px, py){
+      for (var i = 0; i < FIG.length; i++){
+        var f = FIG[i];
+        var bx = (px - f.x) / (f.r * 0.78), by = (py - f.y) / (f.r * 1.05);
+        var e  = bx*bx + by*by;
+        var hx = (px - f.x) / (f.r * 0.40), hy = (py - (f.y - f.r * 1.25)) / (f.r * 0.44);
+        var hh = hx*hx + hy*hy;
+        if (e < 1 || hh < 1){
+          var edge = (e < 1 ? e : hh) > 0.80;
+          var facing = (px - f.x) * (cx - f.x) > 0;
+          return edge && facing ? 2 : 1;            /* 2 = rim-lit edge */
+        }
+      }
+      return 0;
+    }
+
+    var step = Math.max(2.6, W / 190);
+    for (var y = -step; y < H + step; y += step){
+      for (var x = -step; x < W + step; x += step){
+        var px = x + (Math.random()-0.5) * step * 1.05;
+        var py = y + (Math.random()-0.5) * step * 1.05;
+
+        /* firelight falls off fast, and faster upward */
+        var dx = (px - cx) / (W * 0.40), dy = (py - fy) / (H * (py < fy ? 0.26 : 0.34));
+        var glow = Math.exp(-(dx*dx + dy*dy) * 2.0);
+
+        /* the flame: narrow, tall, wavering */
+        var flame = 0;
+        if (py < fy && py > top){
+          var t2 = (fy - py) / (fy - top);
+          var w = W * 0.12 * Math.pow(Math.sin(Math.PI * (0.34 + t2 * 0.62)), 0.55)
+                            * (1 + 0.24 * Math.sin(t2 * 9 + seed));
+          var wob = cx + W * 0.022 * Math.sin(t2 * 4.6 + seed) * t2;
+          var off = Math.abs(px - wob) / w;
+          if (off < 1) flame = 1 - off * off;
+        }
+
+        var col = null, r = step * 0.42 + Math.random() * step * 0.18;
+
+        /* the spark column above the flame */
+        if (py < top + H * 0.04){
+          var sp = Math.exp(-Math.pow((px - cx) / (W * 0.075), 2))
+                 * Math.exp(-Math.pow((top - py) / (H * 0.26), 2));
+          if (Math.random() < sp * 0.8){
+            col = Math.random() < 0.6 ? pick(PAL.core) : pick(PAL.hot);
+            r *= 0.72;
+          }
+        }
+
+        if (col === null){
+          var fig = figureAt(px, py);
+          if (fig === 2){                                   /* rim light on a figure */
+            col = Math.random() < 0.6 ? pick(PAL.warm) : pick(PAL.hot);
+          } else if (fig === 1){                            /* the figure itself */
+            col = Math.random() < 0.85 ? pick(PAL.silhouette) : pick(PAL.night);
+          } else if (flame > 0.22 && Math.random() < 0.97){ /* flame core */
+            col = Math.random() < 0.6 ? pick(PAL.core) : pick(PAL.hot); r *= 1.04;
+          } else if (flame > 0 && Math.random() < 0.3 + flame){
+            col = Math.random() < 0.55 ? pick(PAL.hot) : pick(PAL.warm);
+          } else if (py > horizon){                         /* firelit sand */
+            var lit = Math.exp(-Math.pow((px - cx) / (W * 0.50), 2) * 1.2)
+                    * Math.exp(-Math.pow((py - fy) / (H * 0.34), 2) * 0.8);
+            var q2 = Math.random();
+            if (q2 < lit * 1.25) col = pick(PAL.ground);
+            else if (q2 < 0.30 + lit * 1.2) col = pick(PAL.sandDark);
+            else col = pick(PAL.night);
+          } else if (Math.random() < glow * 0.30){          /* haze around the flame */
+            col = Math.random() < 0.5 ? pick(PAL.warm) : pick(PAL.hot);
+          } else {                                          /* the night */
+            col = Math.random() < 0.965 ? pick(PAL.night) : pick(PAL.mid);
+            if (Math.random() > 0.994){ col = pick(PAL.high); r *= 0.8; }
+          }
+        }
+
+        /* the log pile */
+        var lx = px - cx, ly = py - (fy + H * 0.025);
+        var a1 =  lx * 0.95 + ly * 0.31, b1 = -lx * 0.31 + ly * 0.95;
+        var a2 =  lx * 0.95 - ly * 0.31, b2 =  lx * 0.31 + ly * 0.95;
+        if ((Math.abs(a1) < W*0.13 && Math.abs(b1) < H*0.012) ||
+            (Math.abs(a2) < W*0.13 && Math.abs(b2) < H*0.012)){
+          if (Math.random() < 0.9) col = Math.random() < 0.25 ? pick(PAL.ember) : pick(PAL.log);
+        }
+
+        g.fillStyle = col;
+        g.globalAlpha = 0.85 + Math.random() * 0.15;
+        g.beginPath(); g.arc(px, py, r, 0, 6.2832); g.fill();
+      }
+    }
+    g.globalAlpha = 1;
+    tuneCaption(cv, g, W, H);
+  }
+
+  function statusDot(live){
+    return '<span class="status'+ (live ? ' live' : '') +'" aria-hidden="true"></span>';
+  }
+
+  var rail = document.getElementById('rail');
+  var pad = function(n){ return n < 10 ? '0' + n : '' + n; };
+
+  POSTS.forEach(function(p, i){
+    var n = i + 1;
+    var live = !!p.url;
+    var el = document.createElement('article');
+    el.className = 'poster';
+    el.setAttribute('role','listitem');
+
+    var artHTML = (p.art === 'campfire')
+      ? '<canvas class="fire"></canvas>'
+      : '<canvas class="field" data-field="'+ p.art +'"></canvas>';
+
+    var inner =
+      '<div class="phead"><span class="chips"><i></i><i></i><i></i></span>'+ statusDot(live) +'</div>'+
+      '<h2 class="ptitle"><span class="no">No. '+ pad(n) +'</span>'+ p.title +'</h2>'+
+      (p.sub ? '<p class="psub">'+ p.sub +'</p>' : '')+
+      '<div class="art">'+ artHTML +
+        '<p class="aside light">an Agora<br>essay</p>'+
+      '</div>'+
+      '<div class="credits">'+
+        '<p class="story">Essay by Max Samberg</p>'+
+        '<div class="grid">'+
+          '<span><b>Topic</b>'+ p.topic +'</span>'+
+          '<span><b>Length</b>'+ p.length +'</span>'+
+          (live
+            ? '<span><b>Published</b>'+ p.published +'</span>'
+            : '<span><b>Release Date</b>'+ p.released +'</span>')+
+        '</div>'+
+        '<div class="foot">'+
+          (live
+            ? '<span class="live">Read the essay &rarr;</span>'
+            : '<span class="soon">Coming soon</span>')+
+          '<span class="idx">/ '+ pad(n) +'</span>'+
+        '</div>'+
+      '</div>';
+
+    if (live){
+      el.innerHTML = '<a class="sheet" href="'+ p.url +'" target="_blank" rel="noopener">'+ inner +'</a>';
+    } else {
+      el.innerHTML = '<div class="sheet">'+ inner +'</div>';
+    }
+    rail.appendChild(el);
+
+    var fire = el.querySelector('canvas.fire');
+    var field = el.querySelector('canvas.field');
+    var paint = function(){ if (fire) paintFire(fire); if (field) paintField(field); };
+    if (i < 2) paint(); else setTimeout(paint, 60 * (i - 1));
+  });
+
+  /* ---- the curve: cards rotate away from the centre of the rail ---- */
+  var cards = [].slice.call(rail.children);
+  var ticking = false;
+
+  function curve(){
+    var mid = rail.scrollLeft + rail.clientWidth / 2;
+    cards.forEach(function(c){
+      var cc = c.offsetLeft + c.offsetWidth / 2;
+      var d = (cc - mid) / c.offsetWidth;
+      var k = Math.max(-2.4, Math.min(2.4, d));
+      var ad = Math.abs(k);
+      c.style.transform =
+        'perspective(1500px) rotateY(' + (-k * 15) + 'deg)' +
+        ' translateZ(' + (-ad * 78) + 'px)' +
+        ' translateX(' + (k * 6) + 'px)' +
+        ' scale(' + (1 - ad * 0.045) + ')';
+      c.style.zIndex = String(100 - Math.round(ad * 10));
+      c.style.filter = 'saturate(' + (1 - ad * 0.16).toFixed(2) + ') brightness(' + (1 - ad * 0.05).toFixed(2) + ')';
+    });
+    ticking = false;
+  }
+  function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(curve); } }
+
+  rail.addEventListener('scroll', onScroll, {passive:true});
+  var rt;
+  window.addEventListener('resize', function(){
+    curve();
+    clearTimeout(rt);
+    rt = setTimeout(function(){
+      [].slice.call(document.querySelectorAll('canvas.fire')).forEach(paintFire);
+      [].slice.call(document.querySelectorAll('canvas.field')).forEach(paintField);
+    }, 220);
+  });
+  curve();
+
+  /* ---- drag to flip (clicks on a live poster still work) ---- */
+  var down = false, startX = 0, startLeft = 0, moved = 0;
+  rail.addEventListener('pointerdown', function(e){
+    if (e.pointerType === 'touch') return;
+    down = true; moved = 0; startX = e.clientX; startLeft = rail.scrollLeft;
+    rail.classList.add('dragging');
+  });
+  rail.addEventListener('pointermove', function(e){
+    if (!down) return;
+    var dx = e.clientX - startX; moved = Math.abs(dx);
+    if (moved > 3 && !rail.hasPointerCapture(e.pointerId)) rail.setPointerCapture(e.pointerId);
+    rail.scrollLeft = startLeft - dx;
+  });
+  function release(){
+    if (!down) return;
+    down = false; rail.classList.remove('dragging');
+    var w = cards[0].offsetWidth + parseFloat(getComputedStyle(rail).columnGap || 0);
+    var idx = Math.round(rail.scrollLeft / w);
+    cards[Math.max(0, Math.min(cards.length - 1, idx))]
+      .scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+  }
+  rail.addEventListener('pointerup', release);
+  rail.addEventListener('pointercancel', release);
+  rail.addEventListener('click', function(e){ if (moved > 6) e.preventDefault(); }, true);
+
+  /* ---- vertical wheel scrolls the rail sideways ---- */
+  rail.addEventListener('wheel', function(e){
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+      rail.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }
+  }, {passive:false});
+
+  /* ---- arrow keys ---- */
+  document.addEventListener('keydown', function(e){
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    var w = cards[0].offsetWidth + parseFloat(getComputedStyle(rail).columnGap || 0);
+    var idx = Math.round(rail.scrollLeft / w) + (e.key === 'ArrowRight' ? 1 : -1);
+    idx = Math.max(0, Math.min(cards.length - 1, idx));
+    cards[idx].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+  });
+})();
+</script>
 </body>
 </html>
