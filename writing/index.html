@@ -236,8 +236,10 @@ a.sheet:hover{
       art:'campfire', url:'https://agoraresearchco.substack.com/p/from-campfires-to-pubs' },
     { title:'Where We Stand Today',
       sub:'Connectivity Without Connection',
-      topic:'Culture', length:'~5 min', released:'Oct 8, 2026', art:0 },
-    { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:1 },
+      topic:'Culture', length:'~5 min', published:'Oct 9, 2026',
+      art:'arches', url:'https://agoraresearchco.substack.com/p/where-we-stand-today' },
+    { title:'Three Personal Stories',
+      topic:'Narrative', length:'~5 min', released:'Oct 15, 2026', art:1 },
     { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:2 },
     { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:3 },
     { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:4 },
@@ -453,6 +455,144 @@ a.sheet:hover{
     tuneCaption(cv, g, W, H);
   }
 
+  /* ------------------------------------------- pointillist ruins at sunset */
+  var STONE = {
+    lit    : ['#FFF6E6','#FBEFD8','#FDE7C6','#FAE2CC'],
+    face   : ['#F2E6D0','#EBDCC2','#E4D3B6','#F6EDDC'],
+    shade  : ['#B9A892','#A2927F','#8D8578','#C7B7A0'],
+    deep   : ['#6E665E','#5C564F','#847A6E'],
+    moss   : ['#7E9C6B','#6B8A5A','#9CB37E']
+  };
+  var SKY = {
+    high : ['#4FB9E4','#35A9DC','#6ECBEE','#8FDCF4'],
+    mid  : ['#AFD9EE','#CFE3EE','#F3C9A8','#EFBF9C'],
+    warm : ['#FBB07A','#F79A72','#FCC99C','#FF9E6B'],
+    sun  : ['#FFF3D2','#FFE1A3','#FCC99C'],
+    hill : ['#8E9CC4','#7E8EC0','#9AA6CE','#6E7FB4'],
+    sea  : ['#8FC6E8','#A9D4EC','#7FB6DE','#C3E2F2'],
+    floor: ['#F1E4CF','#E7D7BE','#F8E8CF','#DCCAB0']
+  };
+
+  function paintArches(cv){
+    var box = cv.getBoundingClientRect();
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    var W = Math.max(160, Math.round((box.width  || 240) * dpr));
+    var H = Math.max(160, Math.round((box.height || 320) * dpr));
+    cv.width = W; cv.height = H;
+    var g = cv.getContext('2d');
+    g.fillStyle = '#D9EDF3'; g.fillRect(0, 0, W, H);
+
+    var horizon = H * 0.70;        /* sea meets sky */
+    var ground  = H * 0.80;        /* the plaza */
+    var sunX = W * 0.92, sunY = H * 0.66;
+
+    /* the arcade */
+    var piers = [0.085, 0.365, 0.645, 0.925].map(function(f){ return f * W; });
+    var pierW = W * 0.088, springing = H * 0.45, ringW = W * 0.05;
+    var entTop = H * 0.10, entBot = H * 0.235;
+    var plinth = H * 0.76;
+
+    function stoneAt(px, py){
+      if (py > plinth && py < ground) return 1;                       /* base wall */
+      if (py >= entTop && py <= entBot) return 1;                     /* entablature */
+      for (var i = 0; i < piers.length; i++){
+        if (Math.abs(px - piers[i]) < pierW / 2 && py > entBot && py < plinth) return 1;
+      }
+      for (var j = 0; j < piers.length - 1; j++){
+        var cxA = (piers[j] + piers[j+1]) / 2;
+        var R = (piers[j+1] - piers[j] - pierW) / 2 + ringW * 0.5;
+        var d = Math.sqrt(Math.pow(px - cxA, 2) + Math.pow(py - springing, 2));
+        if (py < springing && d > R - ringW && d < R) return 1;       /* arch ring */
+      }
+      return 0;
+    }
+
+    var step = Math.max(2.6, W / 190);
+    for (var y = -step; y < H + step; y += step){
+      for (var x = -step; x < W + step; x += step){
+        var px = x + (Math.random()-0.5) * step * 1.05;
+        var py = y + (Math.random()-0.5) * step * 1.05;
+        var col, r = step * 0.42 + Math.random() * step * 0.18;
+        var t = py / H, q = Math.random();
+
+        var isStone = stoneAt(px, py);
+        var contour = false;
+        if (isStone){
+          var o = step * 1.25;
+          contour = !stoneAt(px + o, py) || !stoneAt(px - o, py) ||
+                    !stoneAt(px, py + o) || !stoneAt(px, py - o);
+        }
+
+        if (isStone){
+          /* the sun is off to the right, so stone warms and brightens that way */
+          var warmth = Math.exp(-Math.pow((px - sunX) / (W * 0.85), 2));
+          var edge = 0;
+          for (var k = 0; k < piers.length; k++){
+            var e = Math.abs(Math.abs(px - piers[k]) - pierW / 2);
+            if (e < step * 1.6) edge = 1;
+          }
+          r *= 1.12;
+          if (q < 0.40 + warmth * 0.34) col = pick(STONE.lit);
+          else if (q < 0.95) col = pick(STONE.face);
+          else col = pick(STONE.shade);
+          /* undersides sit in shadow: just below the entablature, and the left of each pier */
+          if (py > entBot - step * 1.4 && py < entBot + H * 0.022 && Math.random() < 0.7) col = pick(STONE.shade);
+          for (var m = 0; m < piers.length; m++){
+            if (px < piers[m] && piers[m] - px < pierW * 0.30 && py > entBot && py < plinth && Math.random() < 0.45){
+              col = pick(STONE.shade);
+            }
+          }
+          if (edge && Math.random() < 0.5) col = Math.random() < 0.65 ? pick(STONE.lit) : pick(STONE.shade);
+          if (contour && Math.random() < 0.82) col = Math.random() < 0.5 ? pick(STONE.shade) : pick(STONE.deep);
+          /* cracks and weathering */
+          var crack = Math.sin(px * 0.11 + py * 0.05) + Math.sin(py * 0.17 - px * 0.03);
+          if (crack > 2.02 && Math.random() < 0.35) col = pick(STONE.shade);
+          /* vines along the top corners */
+          if (py < entBot + H * 0.03 && (px < W * 0.17 || px > W * 0.83) &&
+              Math.random() < 0.2) col = pick(STONE.moss);
+        }
+        else if (py > ground){                                  /* the plaza */
+          var shine = Math.exp(-Math.pow((px - sunX) / (W * 0.6), 2)) * (py - ground) / (H * 0.2);
+          if (q < 0.22 + shine * 0.5) col = pick(SKY.warm);
+          else col = pick(SKY.floor);
+          if (Math.abs(((px * 0.9 + py * 1.6) % (W * 0.16))) < step * 0.9) col = pick(STONE.shade);
+        }
+        else if (py > horizon){                                 /* the water */
+          col = q < 0.78 ? pick(SKY.sea) : pick(SKY.high);
+          if (q > 0.93) col = pick(SKY.warm);                   /* sun on the water */
+        }
+        else if (py > horizon - H * 0.065 - H * 0.025 * Math.sin(px / W * 6.0 + 0.8)){
+          col = q < 0.9 ? pick(SKY.hill) : pick(SKY.sea);       /* far mountains */
+        }
+        else {                                                  /* the sky */
+          var sunGlow = Math.exp(-(Math.pow((px - sunX) / (W * 0.42), 2) +
+                                   Math.pow((py - sunY) / (H * 0.30), 2)));
+          if (Math.random() < sunGlow * 1.15) col = pick(SKY.sun);
+          else if (t < 0.26) col = q < 0.93 ? pick(SKY.high) : pick(SKY.mid);
+          else if (t < 0.46) col = q < 0.78 ? pick(SKY.high) : pick(SKY.mid);
+          else if (t < 0.60) col = q < 0.46 ? pick(SKY.high) : (q < 0.76 ? pick(SKY.mid) : pick(SKY.warm));
+          else               col = q < 0.22 ? pick(SKY.mid)  : pick(SKY.warm);
+          /* a few clouds catching the light */
+          var cl = Math.sin(px / W * 5.2 + 1.2) * Math.sin(py / H * 9.0);
+          if (cl > 0.80 && py > H * 0.40 && py < horizon - H * 0.02 && Math.random() < 0.5){
+            col = pick(SKY.sun);
+          }
+        }
+
+        g.fillStyle = col;
+        g.globalAlpha = 0.85 + Math.random() * 0.15;
+        g.beginPath(); g.arc(px, py, r, 0, 6.2832); g.fill();
+      }
+    }
+    g.globalAlpha = 1;
+    tuneCaption(cv, g, W, H);
+  }
+
+  function paintScene(cv){
+    if (cv.getAttribute('data-scene') === 'arches') paintArches(cv);
+    else paintFire(cv);
+  }
+
   function statusDot(live){
     return '<span class="status'+ (live ? ' live' : '') +'" aria-hidden="true"></span>';
   }
@@ -467,8 +607,8 @@ a.sheet:hover{
     el.className = 'poster';
     el.setAttribute('role','listitem');
 
-    var artHTML = (p.art === 'campfire')
-      ? '<canvas class="fire"></canvas>'
+    var artHTML = (typeof p.art === 'string')
+      ? '<canvas class="scene" data-scene="'+ p.art +'"></canvas>'
       : '<canvas class="field" data-field="'+ p.art +'"></canvas>';
 
     var inner =
@@ -502,9 +642,9 @@ a.sheet:hover{
     }
     rail.appendChild(el);
 
-    var fire = el.querySelector('canvas.fire');
+    var scene = el.querySelector('canvas.scene');
     var field = el.querySelector('canvas.field');
-    var paint = function(){ if (fire) paintFire(fire); if (field) paintField(field); };
+    var paint = function(){ if (scene) paintScene(scene); if (field) paintField(field); };
     if (i < 2) paint(); else setTimeout(paint, 60 * (i - 1));
   });
 
@@ -537,7 +677,7 @@ a.sheet:hover{
     curve();
     clearTimeout(rt);
     rt = setTimeout(function(){
-      [].slice.call(document.querySelectorAll('canvas.fire')).forEach(paintFire);
+      [].slice.call(document.querySelectorAll('canvas.scene')).forEach(paintScene);
       [].slice.call(document.querySelectorAll('canvas.field')).forEach(paintField);
     }, 220);
   });
