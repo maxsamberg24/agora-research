@@ -238,9 +238,13 @@ a.sheet:hover{
       sub:'Connectivity Without Connection',
       topic:'Culture', length:'~5 min', published:'Oct 9, 2026',
       art:'arches', url:'https://agoraresearchco.substack.com/p/where-we-stand-today' },
-    { title:'Three Personal Stories',
-      topic:'Narrative', length:'~5 min', released:'Oct 15, 2026', art:1 },
-    { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:2 },
+    { title:'Stuck in the Cafeteria',
+      sub:'Three stories, one broken default',
+      topic:'Narrative', length:'~5 min', published:'Oct 15, 2026',
+      art:'cafeteria', url:'https://agoraresearchco.substack.com/p/stuck-in-the-cafeteria' },
+    { title:'The Social Infrastructure Gap Years',
+      sub:'Life of a Young Adult in the 21st Century',
+      topic:'Opinion', length:'~5 min', released:'Oct 22, 2026', art:2 },
     { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:3 },
     { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:4 },
     { title:'Untitled', topic:'TBD', length:'TBD', released:'TBD', art:5 },
@@ -588,8 +592,142 @@ a.sheet:hover{
     tuneCaption(cv, g, W, H);
   }
 
+  /* ----------------------------------------- pointillist cafeteria line */
+  var CAF = {
+    wall   : ['#CFC9BA','#DCD6C6','#C2BCAE','#E4DECE'],
+    ceil   : ['#E8E3D6','#F2EEE2','#D6D1C4'],
+    lamp   : ['#FFF8E6','#FFF3D2','#FFFFFF'],
+    steel  : ['#C6C9CF','#B2B7C0','#D9DDE3','#9DA3AD'],
+    steelHi: ['#F0F3F7','#E2E7EE','#FFFFFF'],
+    glass  : ['#DCEEF4','#CBE6F0','#EAF6FA'],
+    trayR  : ['#E0493C','#CF3F34','#EE5A4A'],
+    trayG  : ['#4E9A5A','#43874F','#5CAE68'],
+    cup    : ['#F6F4EE','#EDEAE1','#FFFFFF'],
+    fruit  : ['#F79A72','#FCC99C','#F67451','#FFB25C'],
+    floor  : ['#CDBBA0','#C0AE93','#DCCBB0','#B5A punkt'],
+    hat    : ['#B8A382','#A4906F','#C9B494'],
+    skin   : ['#F3C9A8','#E8B994','#FAD8BC'],
+    shirtB : ['#3F74B8','#2F5E9E','#5E90CE'],
+    shirtW : ['#EAF1F8','#D8E6F2'],
+    shirtR : ['#D4584E','#C0463D'],
+    tray   : ['#7FC3EC','#5FAEE0','#A9DCF4'],
+    dark   : ['#4A4740','#3A3833','#5D594F']
+  };
+  CAF.floor = ['#CDBBA0','#C0AE93','#DCCBB0','#B5A38A'];
+
+  function paintCafeteria(cv){
+    var box = cv.getBoundingClientRect();
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    var W = Math.max(160, Math.round((box.width  || 240) * dpr));
+    var H = Math.max(160, Math.round((box.height || 320) * dpr));
+    cv.width = W; cv.height = H;
+    var g = cv.getContext('2d');
+    g.fillStyle = '#D6D0C2'; g.fillRect(0, 0, W, H);
+
+    /* the serving line runs away from us, down-left to up-right */
+    function edgeY(px){ return H * 0.90 - (px / W) * H * 0.52; }   /* front edge  */
+    function topY(px){  return edgeY(px) - H * 0.17; }             /* counter top */
+    
+    var glassTop = function(px){ return topY(px) - H * 0.50; };
+
+    /* the boy, left foreground */
+    var hx = W * 0.19;
+    function figureAt(px, py){
+      var e;
+      /* hat brim + crown */
+      e = Math.pow((px - hx) / (W * 0.145), 2) + Math.pow((py - H * 0.30) / (H * 0.055), 2);
+      if (e < 1) return 'hat';
+      e = Math.pow((px - hx) / (W * 0.082), 2) + Math.pow((py - H * 0.235) / (H * 0.085), 2);
+      if (e < 1) return 'hat';
+      /* face */
+      e = Math.pow((px - hx) / (W * 0.068), 2) + Math.pow((py - H * 0.42) / (H * 0.105), 2);
+      if (e < 1) return 'skin';
+      /* body */
+      e = Math.pow((px - (hx - W * 0.01)) / (W * 0.155), 2) + Math.pow((py - H * 0.80) / (H * 0.33), 2);
+      if (e < 1) return 'shirt';
+      /* arm reaching to the tray */
+      var ax = px - W * 0.30, ay = py - H * 0.70;
+      var u = ax * 0.97 + ay * 0.24, v = -ax * 0.24 + ay * 0.97;
+      if (Math.abs(u) < W * 0.11 && Math.abs(v) < H * 0.055) return 'shirt';
+      /* the blue tray */
+      var tx = px - W * 0.42, ty = py - H * 0.80;
+      var tu = tx * 0.98 + ty * 0.20, tv = -tx * 0.20 + ty * 0.98;
+      if (Math.abs(tu) < W * 0.165 && Math.abs(tv) < H * 0.075) return 'tray';
+      return null;
+    }
+
+    var step = Math.max(2.6, W / 190);
+    for (var y = -step; y < H + step; y += step){
+      for (var x = -step; x < W + step; x += step){
+        var px = x + (Math.random()-0.5) * step * 1.05;
+        var py = y + (Math.random()-0.5) * step * 1.05;
+        var q = Math.random(), col = null, r = step * 0.42 + Math.random() * step * 0.18;
+
+        var part = figureAt(px, py);
+        if (part){
+          var out = !figureAt(px + step * 1.25, py) || !figureAt(px - step * 1.25, py) ||
+                    !figureAt(px, py + step * 1.25) || !figureAt(px, py - step * 1.25);
+          if (part === 'hat')   col = q < 0.82 ? pick(CAF.hat) : pick(CAF.dark);
+          if (part === 'skin')  col = q < 0.86 ? pick(CAF.skin) : pick(CAF.hat);
+          if (part === 'tray')  col = q < 0.9 ? pick(CAF.tray) : pick(CAF.steelHi);
+          if (part === 'shirt'){
+            /* a plaid of blue, white and red */
+            var cu = Math.floor(px / (W * 0.028)), cvv = Math.floor(py / (H * 0.05));
+            var cell = (cu + cvv) % 4;
+            if (cell === 0) col = pick(CAF.shirtW);
+            else if (cell === 2) col = q < 0.3 ? pick(CAF.shirtR) : pick(CAF.shirtB);
+            else col = pick(CAF.shirtB);
+          }
+          if (out && Math.random() < 0.7) col = pick(CAF.dark);
+          r *= 1.1;
+        }
+        else {
+          var eY = edgeY(px), tY = topY(px);
+          if (py > eY){                                   /* front of the counter + floor */
+            if (py > eY + H * 0.20) col = q < 0.86 ? pick(CAF.floor) : pick(CAF.hat);
+            else col = q < 0.22 ? pick(CAF.steelHi) : pick(CAF.steel);
+            /* the rail catches the light */
+            if (py - eY < step * 2.2) col = pick(CAF.steelHi);
+          }
+          else if (py > tY){                              /* counter surface */
+            col = q < 0.3 ? pick(CAF.steelHi) : pick(CAF.steel);
+          }
+          else if (py > tY - H * 0.185){                  /* the trays of fruit cups */
+            var band = (py > tY - H * 0.093) ? 0 : 1;
+            var slot = Math.floor((px + band * W * 0.06) / (W * 0.235));
+            col = (slot % 2 === 0) ? pick(CAF.trayR) : pick(CAF.trayG);
+            /* cups in rows, white rims with fruit inside */
+            var cwx = W * 0.055, cwy = H * 0.046;
+            var ox = ((px + band * W * 0.03) % cwx) - cwx / 2;
+            var oy = ((py + band * H * 0.012) % cwy) - cwy / 2;
+            var d = Math.sqrt(ox*ox / (cwx*cwx) + oy*oy / (cwy*cwy)) * 2;
+            if (d < 0.95) col = (d < 0.72) ? pick(CAF.fruit) : pick(CAF.cup);
+          }
+          else if (py > glassTop(px)){                    /* the sneeze guard */
+            col = q < 0.62 ? pick(CAF.glass) : pick(CAF.steelHi);
+            var streak = Math.sin((px * 0.9 + py * 2.4) / (W * 0.05));
+            if (streak > 0.86 && Math.random() < 0.7) col = pick(CAF.lamp);
+          }
+          else {                                          /* wall and ceiling lights */
+            col = q < 0.8 ? pick(CAF.wall) : pick(CAF.ceil);
+            var lampX = ((px / W) * 5) % 1;
+            if (py < H * 0.16 && lampX > 0.42 && lampX < 0.56 && Math.random() < 0.75) col = pick(CAF.lamp);
+          }
+        }
+
+        g.fillStyle = col;
+        g.globalAlpha = 0.85 + Math.random() * 0.15;
+        g.beginPath(); g.arc(px, py, r, 0, 6.2832); g.fill();
+      }
+    }
+    g.globalAlpha = 1;
+    tuneCaption(cv, g, W, H);
+  }
+
   function paintScene(cv){
-    if (cv.getAttribute('data-scene') === 'arches') paintArches(cv);
+    var k = cv.getAttribute('data-scene');
+    if (k === 'arches') paintArches(cv);
+    else if (k === 'cafeteria') paintCafeteria(cv);
     else paintFire(cv);
   }
 
