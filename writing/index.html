@@ -239,7 +239,7 @@ a.sheet:hover{
       topic:'Culture', length:'~5 min', published:'Oct 9, 2026',
       art:'arches', url:'https://agoraresearchco.substack.com/p/where-we-stand-today' },
     { title:'Stuck in the Cafeteria',
-      sub:'Three stories, one broken default',
+      sub:'Three Stories, One Broken Default',
       topic:'Narrative', length:'~5 min', published:'Oct 15, 2026',
       art:'cafeteria', url:'https://agoraresearchco.substack.com/p/stuck-in-the-cafeteria' },
     { title:'The Social Infrastructure Gap Years',
@@ -632,27 +632,33 @@ a.sheet:hover{
 
     /* the boy, left foreground */
     var hx = W * 0.19;
+    function ell(px, py, cx2, cy2, rx, ry){
+      var a = (px - cx2) / rx, b = (py - cy2) / ry;
+      return a*a + b*b < 1;
+    }
     function figureAt(px, py){
-      var e;
-      /* hat brim + crown */
-      e = Math.pow((px - hx) / (W * 0.145), 2) + Math.pow((py - H * 0.30) / (H * 0.055), 2);
-      if (e < 1) return 'hat';
-      e = Math.pow((px - hx) / (W * 0.082), 2) + Math.pow((py - H * 0.235) / (H * 0.085), 2);
-      if (e < 1) return 'hat';
-      /* face */
-      e = Math.pow((px - hx) / (W * 0.068), 2) + Math.pow((py - H * 0.42) / (H * 0.105), 2);
-      if (e < 1) return 'skin';
-      /* body */
-      e = Math.pow((px - (hx - W * 0.01)) / (W * 0.155), 2) + Math.pow((py - H * 0.80) / (H * 0.33), 2);
-      if (e < 1) return 'shirt';
-      /* arm reaching to the tray */
-      var ax = px - W * 0.30, ay = py - H * 0.70;
-      var u = ax * 0.97 + ay * 0.24, v = -ax * 0.24 + ay * 0.97;
-      if (Math.abs(u) < W * 0.11 && Math.abs(v) < H * 0.055) return 'shirt';
+      /* head, then the hat sitting on it: a dome plus a narrow brim */
+      var face = ell(px, py, hx, H * 0.405, W * 0.060, H * 0.088);
+      var crown = ell(px, py, hx, H * 0.315, W * 0.070, H * 0.070);
+      var brim  = ell(px, py, hx, H * 0.352, W * 0.112, H * 0.026);
+      if (crown || brim) return 'hat';
+      if (face) return (py < H * 0.375) ? 'shadeskin' : 'skin';
+      /* neck */
+      if (ell(px, py, hx, H * 0.495, W * 0.026, H * 0.040)) return 'skin';
+      /* shoulders and torso */
+      if (ell(px, py, hx, H * 0.60, W * 0.125, H * 0.085)) return 'shirt';
+      if (ell(px, py, hx - W * 0.004, H * 0.86, W * 0.145, H * 0.30)) return 'shirt';
+      /* the arm reaching out to the tray, tapering as it goes */
+      var t = (px - (hx + W * 0.07)) / (W * 0.26);
+      if (t > 0 && t < 1){
+        var ay = H * 0.645 + t * H * 0.115;
+        var th = H * 0.055 - t * H * 0.016;
+        if (Math.abs(py - ay) < th) return 'shirt';
+      }
       /* the blue tray */
-      var tx = px - W * 0.42, ty = py - H * 0.80;
+      var tx = px - W * 0.44, ty = py - H * 0.80;
       var tu = tx * 0.98 + ty * 0.20, tv = -tx * 0.20 + ty * 0.98;
-      if (Math.abs(tu) < W * 0.165 && Math.abs(tv) < H * 0.075) return 'tray';
+      if (Math.abs(tu) < W * 0.155 && Math.abs(tv) < H * 0.070) return 'tray';
       return null;
     }
 
@@ -667,8 +673,9 @@ a.sheet:hover{
         if (part){
           var out = !figureAt(px + step * 1.25, py) || !figureAt(px - step * 1.25, py) ||
                     !figureAt(px, py + step * 1.25) || !figureAt(px, py - step * 1.25);
-          if (part === 'hat')   col = q < 0.82 ? pick(CAF.hat) : pick(CAF.dark);
-          if (part === 'skin')  col = q < 0.86 ? pick(CAF.skin) : pick(CAF.hat);
+          if (part === 'hat')   col = q < 0.84 ? pick(CAF.hat) : pick(CAF.dark);
+          if (part === 'skin')  col = q < 0.88 ? pick(CAF.skin) : pick(CAF.hat);
+          if (part === 'shadeskin') col = q < 0.42 ? pick(CAF.hat) : pick(CAF.skin);
           if (part === 'tray')  col = q < 0.9 ? pick(CAF.tray) : pick(CAF.steelHi);
           if (part === 'shirt'){
             /* a plaid of blue, white and red */
@@ -678,7 +685,10 @@ a.sheet:hover{
             else if (cell === 2) col = q < 0.3 ? pick(CAF.shirtR) : pick(CAF.shirtB);
             else col = pick(CAF.shirtB);
           }
-          if (out && Math.random() < 0.7) col = pick(CAF.dark);
+          if (out){
+            var soft = (part === 'skin' || part === 'shadeskin');
+            if (Math.random() < (soft ? 0.45 : 0.7)) col = soft ? pick(CAF.hat) : pick(CAF.dark);
+          }
           r *= 1.1;
         }
         else {
